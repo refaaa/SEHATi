@@ -1,0 +1,46 @@
+/* supaya seluruh isi ketengah layar */
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* biar nav di atas, footer di bawah */
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    /* isi area di antara nav dan footer */
+    display: flex;
+    justify-content: center;
+    /* horizontal center */
+    align-items: center;
+    /* vertical center */
+}
+
+
+/* biar card rapi */
+
+.card {
+    width: 100%;
+    min-width: 400px;
+    max-width: 900px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* small additions */
+
+#profile-form input {
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+#profile-form label {
+    text-align: left;
+    display: block;
+    margin-bottom: 4px;
+}

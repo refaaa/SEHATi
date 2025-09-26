@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SEHATi — Profil</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <div class="logo">S</div>
+            <div>SEHATi</div>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="history.html">Riwayat</a>
+            <a href="profile.html">Profil</a>
+            <a href="about.html">Tentang</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card" style="max-width:640px">
+            <h3>Profil & Pengaturan</h3>
+            <form id="profile-form" style="margin-top:10px;">
+                <label>Nama</label>
+                <input type="text" name="name" required>
+                <label style="margin-top:8px">Email</label>
+                <input type="email" name="email" required>
+                <label style="margin-top:8px">Umur</label>
+                <input type="number" name="age" required>
+                <label style="margin-top:8px">Target Kalori Harian (kkal)</label>
+                <input type="number" name="target" required>
+                <div style="margin-top:12px;display:flex;gap:10px">
+                    <button class="btn" type="submit">Simpan</button>
+                    <button type="button" id="logout" style="background:#eee;border-radius:10px;padding:10px 12px;border:0;cursor:pointer">Logout</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="small">© SEHATi</div>
+        <div class="footer-icons">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7v13h7v-7h6v7h7V7z"/></svg>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

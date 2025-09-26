@@ -1,0 +1,64 @@
+/* layout tweaks */
+
+.row {
+    align-items: flex-start
+}
+
+#today-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px;
+    border-bottom: 1px dashed #f0f0f0
+}
+
+#today-list li .meta {
+    font-size: 13px;
+    color: var(--muted)
+}
+
+#today-list li button {
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #eee;
+    cursor: pointer
+}
+
+#warning {
+    font-weight: bold;
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+#progress-bar {
+    transition: width 0.5s ease, background 0.3s ease;
+}
+
+
+/* Cards */
+
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 18px;
+    transition: all 0.3s ease;
+}
+
+
+/* hanya card dengan highlight-card yang zoom-in */
+
+.highlight-card {
+    cursor: pointer;
+}
+
+.highlight-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
