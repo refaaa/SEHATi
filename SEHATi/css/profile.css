@@ -5,6 +5,9 @@ body {
     flex-direction: column;
     /* biar nav di atas, footer di bawah */
     min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #222;
 }
 
 .container {
@@ -20,12 +23,31 @@ body {
 
 /* biar card rapi */
 
+.ch3 {
+    font-weight: 600;
+}
+
+label {
+    font-weight: 500;
+}
+
 .card {
     width: 100%;
     min-width: 400px;
     max-width: 900px;
     text-align: center;
     padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #87CEEB;
+    /* biru muda */
 }
 
 
@@ -37,10 +59,27 @@ body {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ddd;
+    transition: 0.2s ease;
 }
 
 #profile-form label {
     text-align: left;
     display: block;
     margin-bottom: 4px;
+}
+
+#profile-form select {
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.2s ease;
+}
+
+#profile-form input:focus,
+#profile-form select:focus {
+    border-color: #87CEEB;
+    box-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+    outline: none;
 }
