@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const progressBar = document.getElementById('progress-bar');
     const todayList = document.getElementById('today-list');
-    const warning = document.getElementById('warning'); // << fix: warning element
+    const warning = document.getElementById('warning');
 
     function loadToday() {
         const entries = getEntries().filter(e => e.email === user && e.date === today);
