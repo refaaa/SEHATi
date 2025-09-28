@@ -1,0 +1,128 @@
+/* ======== GLOBAL ======== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #f5fff7, #e9fdf3);
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ======== FORM CONTAINER ======== */
+
+.profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.profile-container:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ======== HEADER ======== */
+
+.profile-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 8px;
+}
+
+
+/* ======== LABEL ======== */
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 12px 0 6px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* ======== INPUTS ======== */
+
+input,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #4caf50;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+
+/* ======== BUTTONS ======== */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button.save-btn {
+    background: #4caf50;
+    color: #fff;
+}
+
+button.save-btn:hover {
+    background: #43a047;
+}
+
+button.logout-btn {
+    background: #f1f1f1;
+    color: #444;
+}
+
+button.logout-btn:hover {
+    background: #e0e0e0;
+}
+
+
+/* ======== RESPONSIVE ======== */
+
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-actions button {
+        width: 100%;
+    }
+}

@@ -1,85 +1,100 @@
-/* supaya seluruh isi ketengah layar */
-
-body {
-    display: flex;
-    flex-direction: column;
-    /* biar nav di atas, footer di bawah */
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: #222;
-}
-
-.container {
-    flex: 1;
-    /* isi area di antara nav dan footer */
-    display: flex;
-    justify-content: center;
-    /* horizontal center */
-    align-items: center;
-    /* vertical center */
-}
-
-
-/* biar card rapi */
-
-.ch3 {
-    font-weight: 600;
-}
-
-label {
-    font-weight: 500;
-}
+/* Container Card */
 
 .card {
-    width: 100%;
-    min-width: 400px;
-    max-width: 900px;
-    text-align: center;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 35px;
+    margin: 50px auto;
+    max-width: 600px;
 }
+
+
+/* Judul */
 
 .card h3 {
+    font-size: 1.6rem;
     font-weight: 600;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #87CEEB;
-    /* biru muda */
+    color: #333;
+    /* abu gelap, netral */
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    /* sedikit renggang biar modern */
 }
 
 
-/* small additions */
+/* Hilangkan garis hijau, diganti separator halus */
 
-#profile-form input {
-    margin-bottom: 12px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    transition: 0.2s ease;
-}
 
-#profile-form label {
-    text-align: left;
+/* Label */
+
+.card label {
     display: block;
-    margin-bottom: 4px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 14px;
 }
 
-#profile-form select {
-    margin-bottom: 12px;
+
+/* Input & Select */
+
+.card input,
+.card select {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 12px 14px;
     border: 1px solid #ddd;
-    transition: 0.2s ease;
+    border-radius: 12px;
+    font-size: 14px;
+    background: #fafafa;
+    transition: all 0.25s ease;
 }
 
-#profile-form input:focus,
-#profile-form select:focus {
-    border-color: #87CEEB;
-    box-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+.card input:focus,
+.card select:focus {
+    border-color: #2e7d32;
+    background: #fff;
     outline: none;
+    box-shadow: 0 0 8px rgba(46, 125, 50, 0.2);
+}
+
+
+/* Tombol */
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+}
+
+.btn[type="submit"] {
+    background: #2e7d32;
+    color: #fff;
+}
+
+.btn[type="submit"]:hover {
+    background: #256628;
+}
+
+#logout {
+    flex: 1;
+    background: #f2f2f2;
+    color: #444;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#logout:hover {
+    background: #e0e0e0;
 }

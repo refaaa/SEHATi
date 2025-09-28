@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav>
         <div class="brand">
             <div class="logo">S</div>
@@ -18,45 +19,53 @@
         <div class="nav-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="history.html">Riwayat</a>
-            <a href="profile.html">Profil</a>
             <a href="about.html">Tentang</a>
+            <a href="contact.html">Kontak</a>
+            <a href="profile.html" class="active">Profil</a>
         </div>
     </nav>
 
+    <!-- Konten -->
     <div class="container">
-        <div class="card" style="max-width:640px">
-            <h3>Profil & Pengaturan</h3>
-            <form id="profile-form" style="margin-top:10px;">
-                <label>Nama</label>
+        <div class="card profile-card">
+            <div class="profile-header">
+                <h3> Profil & Pengaturan</h3>
+            </div>
+
+            <form id="profile-form">
+                <label><span class="icon">👨‍💼</span> Nama</label>
                 <input type="text" name="name" required>
-                <label style="margin-top:8px">Email</label>
+
+                <label><span class="icon">📧</span> Email</label>
                 <input type="email" name="email" required>
-                <label style="margin-top:8px">Umur</label>
+
+                <label><span class="icon">🎂</span> Umur</label>
                 <input type="number" name="age" required>
-                <label style="margin-top:8px">Jenis Kelamin</label>
+
+                <label><span class="icon">⚧</span> Jenis Kelamin</label>
                 <select name="gender" required>
-                    <option value="">-Pilih-</option>
-                    <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
-                </select>
-                <label style="margin-top:8px">Target Kalori Harian (kkal)</label>
+        <option value="">- Pilih -</option>
+        <option value="L">Laki-laki</option>
+        <option value="P">Perempuan</option>
+      </select>
+
+                <label><span class="icon">🔥</span> Target Kalori Harian (kkal)</label>
                 <input type="number" name="target" required>
-                <div style="margin-top:12px;display:flex;gap:10px">
-                    <button class="btn" type="submit">Simpan</button>
-                    <button type="button" id="logout" style="background:#eee;border-radius:10px;padding:10px 12px;border:0;cursor:pointer">Logout</button>
+
+                <div class="form-actions">
+                    <button class="btn save-btn" type="submit">Simpan</button>
+                    <button class="btn logout-btn" type="button" id="logout">Logout</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="small">© SEHATi</div>
-        <div class="footer-icons">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7v13h7v-7h6v7h7V7z"/></svg>
-        </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Script -->
     <script src="js/profile.js"></script>
 </body>
 
