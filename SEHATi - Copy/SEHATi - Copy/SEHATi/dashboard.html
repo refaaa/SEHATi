@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEHATi — Dashboard</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar (sama dengan history.html) -->
+  <nav>
+    <div class="brand">
+      <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+      <div>SEHATi</div>
+    </div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="history.html">Riwayat</a>
+      <a href="profile.html">Profil</a>
+      <a href="about.html">Tentang</a>
+      <a href="contact.html">Kontak</a>
+    </div>
+  </nav>
+
+  <!-- Konten Utama -->
+  <div class="container">
+    <!-- Tracking Kalori -->
+    <div class="card">
+      <h2>📊 Tracking Kalori</h2>
+      <p><strong>Tanggal:</strong> <span id="tanggal"></span></p>
+      <div class="form-input">
+        <input type="text" id="makanan" placeholder="Nama makanan">
+        <input type="number" id="kalori" placeholder="Kalori (kkal)">
+        <button class="btn" onclick="tambahMakanan()">Tambah</button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div id="progress"><span id="progress-text">0%</span></div>
+      </div>
+
+      <p id="totalKalori">Total: 0 / 2000 kkal</p>
+      <h3>Entri Hari Ini</h3>
+      <ul id="daftarMakanan"></ul>
+    </div>
+
+    <!-- Resep Rendah Kalori -->
+    <div class="card">
+      <h2>🥦 Resep Rendah Kalori</h2>
+      <div id="resep-container" class="resep-container"></div>
+    </div>
+  </div>
+
+  <!-- Footer (sama dengan history.html) -->
+  <footer class="site-footer">
+    <div>© 2025 SEHATi • Informatika Medik</div>
+    <div class="footer-icons">
+      <a href="dashboard.html" title="Kembali ke Dashboard">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M12 2L2 9v13h7v-7h6v7h7V9z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
