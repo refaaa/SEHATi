@@ -11,32 +11,68 @@ body {
   line-height: 1.6;
 }
 
-/* ====== NAVBAR ====== */
-.navbar {
-  background: linear-gradient(135deg, #ffafcc, #ff80ab); /* gradien pink */
-  border-bottom: 2px solid #ffc1d6;
+/* ====== NAVBAR & FOOTER ====== */
+nav, 
+.site-footer {
+  background: #1b8f5a; /* hijau pastel muda */
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
 }
 
-.navbar .logo {
-  color: #fff; /* logo putih agar kontras */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
 }
 
-.navbar nav a {
-  background: #e75480; /* pink tua */
-  border: 2px solid transparent;
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
 }
 
-.navbar nav a:hover {
+.navbar .logo i {
+  font-size: 22px;
+  color: #fff; /* putih biar kontras */
+}
+
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
   background: #fff;
-  color: #e75480;
-  border: 2px solid #e75480;
+  color: #157347; /* hijau lebih tua saat hover */
 }
 
-.logo i {
-  font-size: 22px;   /* lebih gede biar jelas */
-  color: #fff;       /* putih biar kontras sama navbar hijau */
+/* ====== FOOTER ====== */
+.site-footer {
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 0.9rem;
 }
 
+.site-footer .footer-icons a {
+  color: #fff;
+  margin-left: 10px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-icons a:hover {
+  color: #157347; /* hijau sedikit lebih tua pas hover */
+}
 
 
 /* ====== CONTAINER ====== */
@@ -54,26 +90,13 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-
-.resep-card {
-  background: linear-gradient(145deg, #ffe6f0, #ffd6eb); /* gradien pink lembut */
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.resep-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
 
 /* ====== FORM INPUT ====== */
 .form-input {
@@ -131,6 +154,24 @@ body {
   background: #157347;
 }
 
+/* Tombol Edit & Hapus */
+#daftarMakanan button:first-child {
+  background: #ffc107; /* kuning (Edit) */
+  color: #333;
+}
+
+#daftarMakanan button:first-child:hover {
+  background: #e0a800;
+}
+
+#daftarMakanan button:last-child {
+  background: #dc3545; /* merah (Hapus) */
+}
+
+#daftarMakanan button:last-child:hover {
+  background: #b02a37;
+}
+
 /* ====== RESEP RENDAH KALORI ====== */
 .resep-container {
   display: grid;
@@ -145,6 +186,8 @@ body {
   padding: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .resep-card:hover {
@@ -156,6 +199,11 @@ body {
   font-size: 1.1rem;
   color: #1b8f5a;
   margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.resep-card:hover h3 {
+  color: #147a48;
 }
 
 .resep-card p {
@@ -179,37 +227,7 @@ body {
   background: #147a48;
 }
 
-/* ====== ANIMASI & STYLE TAMBAHAN ====== */
-
-/* Animasi halus saat card muncul */
-.card {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Styling untuk tombol Edit & Hapus biar beda warna */
-#daftarMakanan button:first-child {
-  background: #ffc107; /* kuning (Edit) */
-  color: #333;
-}
-
-#daftarMakanan button:first-child:hover {
-  background: #e0a800;
-}
-
-#daftarMakanan button:last-child {
-  background: #dc3545; /* merah (Hapus) */
-}
-
-#daftarMakanan button:last-child:hover {
-  background: #b02a37;
-}
-
-/* Total kalori lebih menonjol */
+/* ====== TOTAL KALORI ====== */
 #totalKalori {
   font-weight: bold;
   color: #1b8f5a;
@@ -217,25 +235,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* Warna berbeda kalau hampir melebihi 2000 kkal */
-.over-limit {
-  color: #dc3545 !important;
-}
-
-/* Resep card lebih interaktif */
-.resep-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.resep-card h3 {
-  transition: color 0.3s ease;
-}
-
-.resep-card:hover h3 {
-  color: #147a48;
-}
-/* Indikator kalori */
 #totalKalori.safe {
   color: #1b8f5a; /* hijau */
 }
@@ -248,7 +247,7 @@ body {
   color: #dc3545; /* merah */
 }
 
-/* Progress Bar dengan teks di dalam */
+/* ====== PROGRESS BAR ====== */
 .progress-bar {
   width: 100%;
   height: 30px;
@@ -265,7 +264,7 @@ body {
   border-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* biar teks ikut maju ke kanan */
+  justify-content: flex-end;
   transition: width 0.4s ease, background 0.4s ease;
 }
 
@@ -275,16 +274,21 @@ body {
   color: #000;
 }
 
-/* Responsif untuk tablet */
+/* ====== ANIMASI ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   .resep-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Responsif untuk HP */
 @media (max-width: 600px) {
   .resep-container {
-    grid-template-columns: 1fr; /* 1 kolom */
+    grid-template-columns: 1fr;
   }
 }
