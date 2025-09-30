@@ -11,11 +11,8 @@
 
 <body>
     <!-- Navbar -->
-    <nav>
-        <div class="brand">
-            <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
-            <div>SEHATi</div>
-        </div>
+    <nav class="navbar">
+        <div class="logo"><i class="fa-solid fa-notes-medical"></i> SEHATi</div>
         <div class="nav-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="history.html">Riwayat</a>
@@ -23,59 +20,51 @@
             <a href="contact.html">Kontak</a>
             <a href="profile.html">Profil</a>
         </div>
+        <div id="hamburger" class="hamburger"><i class="fa fa-bars"></i></div>
     </nav>
 
     <!-- Container Login -->
-    <div class="container">
-        <div class="center" style="min-height:calc(100vh - 160px)">
-            <div class="card login-card fade-in" style="max-width:460px;width:100%;">
-
-                <!-- Header -->
-                <div class="login-header">
-                    <h2>Login ke SEHATi</h2>
-                    <p class="subtitle">Masukkan email dan password Anda untuk masuk atau mendaftar.</p>
-                </div>
-
-                <!-- Form Login -->
-                <form id="login-form" autocomplete="off" style="margin-top:12px">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="you@example.com" required>
-
-                    <label style="margin-top:8px">Password</label>
-                    <input type="password" name="password" placeholder="Masukkan password" required>
-
-                    <p id="login-error" class="small" style="color:#b00020;display:none;margin:6px 0"></p>
-
-                    <div style="display:flex;gap:10px;margin-top:12px;justify-content:space-between;align-items:center">
-                        <button class="btn" type="submit">Login</button>
-
-                    </div>
-                </form>
-
-                <!-- Contoh akun -->
-                <p class="small" style="margin-top:10px;color:var(--muted)">
-                    Dengan login, Anda setuju untuk menggunakan layanan ini dengan bijak
-                </p>
-
+    <div class="container login-container">
+        <div class="card login-card fade-in">
+            <div class="login-header">
+                <h2>Login ke SEHATi</h2>
+                <p class="subtitle">Masukkan email dan password Anda untuk masuk atau mendaftar.</p>
             </div>
+
+            <form id="login-form" autocomplete="off">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="you@example.com" required>
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Masukkan password" required>
+
+                <p id="login-error" class="small"></p>
+
+                <button class="btn" type="submit">Login</button>
+            </form>
+
+            <p class="small">
+                Dengan login, Anda setuju untuk menggunakan layanan ini dengan bijak
+            </p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div>© 2025 SEHATi • Informatika Medik</div>
-        <div class="footer-icons">
-            <a href="dashboard.html" title="Kembali ke Dashboard">
-            </a>
-        </div>
     </footer>
 
     <!-- Script -->
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
-    
-});
-
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
 </body>
 
 </html>

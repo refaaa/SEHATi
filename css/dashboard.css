@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4faf6;
+  background-color: #f4f6fa; /* Adjusted background color to match image's light, slightly purplish hue */
   color: #333;
   line-height: 1.6;
   display: flex;
@@ -113,7 +113,7 @@ body {
   flex: 1;
 }
 
-/* ========== CARD ========== */
+/* ========== CARD (Top Tracking Kalori card) ========== */
 .card {
   background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
   padding: 20px;
@@ -135,14 +135,16 @@ body {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center; /* Align items for better visual */
 }
 
 .form-input input {
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #c9d8e3; /* Softer border color for inputs */
   flex: 1;
   min-width: 150px;
+  font-size: 0.95rem; /* Slightly larger text in input */
 }
 
 .form-input button {
@@ -153,6 +155,7 @@ body {
   padding: 10px 16px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 0.95rem;
 }
 
 .form-input button:hover {
@@ -162,6 +165,7 @@ body {
 /* ========== DAFTAR MAKANAN ========== */
 #daftarMakanan {
   list-style: none;
+  padding: 0; /* Ensure no default list padding */
 }
 
 #daftarMakanan li {
@@ -172,6 +176,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow for list items */
+}
+
+#daftarMakanan li span {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
 #daftarMakanan button {
@@ -180,6 +190,7 @@ body {
   padding: 6px 12px;
   cursor: pointer;
   margin-left: 6px;
+  font-size: 0.85rem;
 }
 
 /* Tombol edit */
@@ -203,6 +214,15 @@ body {
 }
 
 /* ========== RESEP RENDAH KALORI ========== */
+h2.resep-title { /* Added a class for the main recipe heading for styling */
+  font-size: 1.5rem;
+  color: #1b8f5a;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing for potential icon */
+}
+
 .resep-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -211,7 +231,7 @@ body {
 }
 
 .resep-card {
-  background: #ffffff;
+  background: #ffffff; /* White background for individual recipe cards */
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -268,7 +288,7 @@ body {
 .progress-bar {
   width: 100%;
   height: 30px;
-  background: #eee;
+  background: #e0e0e0; /* Lighter background for empty progress */
   border-radius: 20px;
   margin: 15px 0;
   overflow: hidden;
@@ -277,7 +297,7 @@ body {
 #progress {
   height: 100%;
   width: 0%;
-  background: #1b8f5a;
+  background: #4CAF50; /* A slightly different shade of green for progress bar */
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -288,7 +308,8 @@ body {
 #progress-text {
   padding-right: 10px;
   font-weight: bold;
-  color: #000;
+  color: #000; /* Assuming black text on progress bar */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 /* ========== ANIMASI ========== */
@@ -307,5 +328,12 @@ body {
 @media (max-width: 600px) {
   .resep-container {
     grid-template-columns: 1fr;
+  }
+  .form-input {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-input input, .form-input button {
+    width: 100%; /* Full width on small screens */
   }
 }

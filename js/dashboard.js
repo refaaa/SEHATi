@@ -1,144 +1,79 @@
-// =====================
-// Proteksi halaman
-// =====================
-requireLogin();
-activateNav();
-
-// =====================
-// Tanggal otomatis
-// =====================
-const today = new Date().toISOString().split("T")[0];
-document.addEventListener("DOMContentLoaded", () => {
-  const tanggalEl = document.getElementById("tanggal");
-  if (tanggalEl) tanggalEl.innerText = today;
-  loadMakanan();
+// Set tanggal otomatis
+document.getElementById('tanggal').textContent = new Date().toLocaleDateString('id-ID', {
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
 });
 
+// Daftar makanan dan kalori
+let daftarMakanan = [];
 let totalKalori = 0;
-const targetKalori = 2000;
+const batasKalori = 2000;
 
-// =====================
-// Load data saat halaman dibuka
-// =====================
-function loadMakanan() {
-  let entries = JSON.parse(localStorage.getItem("entries")) || [];
-  const user = currentUser();
-
-  // Filter: hanya milik user saat ini & hanya hari ini
-  entries = entries.filter(e => e.email === user && e.date === today);
-
-  const daftar = document.getElementById("daftarMakanan");
-  if (!daftar) return;
-
-  daftar.innerHTML = "";
-  totalKalori = 0;
-
-  entries.forEach(e => {
-    totalKalori += e.cal;
-
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <span class="food-info"><strong>${e.food}</strong> - ${e.cal} kkal</span>
-      <div class="btn-group">
-        <button class="edit" onclick="editMakanan('${e.id}')">Edit</button>
-        <button class="del" onclick="hapusMakanan('${e.id}')">Hapus</button>
-      </div>
-    `;
-    daftar.appendChild(li);
-  });
-
-  updateTotal();
-}
-
-// =====================
-// Tambah makanan
-// =====================
 function tambahMakanan() {
-  const makanan = document.getElementById("makanan").value.trim();
-  const kalori = parseInt(document.getElementById("kalori").value);
+  const nama = document.getElementById('makanan').value.trim();
+  const kalori = parseInt(document.getElementById('kalori').value);
 
-  if (!makanan || isNaN(kalori) || kalori <= 0) {
-    alert("Isi nama makanan dan kalori dengan benar!");
-    return;
-  }
+  if(nama === '' || isNaN(kalori) || kalori <= 0) return alert('Isi nama makanan dan kalori dengan benar!');
 
-  let entries = JSON.parse(localStorage.getItem("entries")) || [];
-  const entry = {
-    id: Date.now().toString(),
-    email: currentUser(),
-    food: makanan,
-    cal: kalori,
-    date: today
-  };
-
-  entries.push(entry);
-  localStorage.setItem("entries", JSON.stringify(entries));
-
+  daftarMakanan.push({ nama, kalori });
   totalKalori += kalori;
 
-  if (totalKalori > targetKalori) {
-    alert("⚠️ Total kalori hari ini sudah melebihi target!");
-  }
-
-  document.getElementById("makanan").value = "";
-  document.getElementById("kalori").value = "";
-
-  loadMakanan();
+  updateUI();
+  document.getElementById('makanan').value = '';
+  document.getElementById('kalori').value = '';
 }
 
-// =====================
-// Edit makanan
-// =====================
-function editMakanan(id) {
-  let entries = JSON.parse(localStorage.getItem("entries")) || [];
-  const idx = entries.findIndex(e => e.id === id);
-  if (idx === -1) return;
-
-  const newNama = prompt("Edit nama makanan:", entries[idx].food);
-  const newKalori = parseInt(prompt("Edit kalori:", entries[idx].cal));
-
-  if (newNama && !isNaN(newKalori) && newKalori > 0) {
-    entries[idx].food = newNama;
-    entries[idx].cal = newKalori;
-    localStorage.setItem("entries", JSON.stringify(entries));
-    loadMakanan();
-  }
+function hapusMakanan(index) {
+  totalKalori -= daftarMakanan[index].kalori;
+  daftarMakanan.splice(index, 1);
+  updateUI();
 }
 
-// =====================
-// Hapus makanan
-// =====================
-function hapusMakanan(id) {
-  if (!confirm("Hapus entri ini?")) return;
+function updateUI() {
+  // Update daftar makanan
+  const list = document.getElementById('daftarMakanan');
+  list.innerHTML = '';
+  daftarMakanan.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${item.nama} - ${item.kalori} kkal</span>
+      <button class="del" onclick="hapusMakanan(${index})">Hapus</button>
+    `;
+    list.appendChild(li);
+  });
 
-  let entries = JSON.parse(localStorage.getItem("entries")) || [];
-  entries = entries.filter(e => e.id !== id);
-  localStorage.setItem("entries", JSON.stringify(entries));
+  // Update total kalori
+  document.getElementById('totalKalori').textContent = `Total: ${totalKalori} / ${batasKalori} kkal`;
 
-  loadMakanan();
+  // Update progress bar
+  let persen = Math.min((totalKalori / batasKalori) * 100, 100);
+  const progress = document.getElementById('progress');
+  progress.style.width = persen + '%';
+  document.getElementById('progress-text').textContent = Math.round(persen) + '%';
 }
 
-// =====================
-// Update total + progress bar
-// =====================
-function updateTotal() {
-  const totalEl = document.getElementById("totalKalori");
-  const progressEl = document.getElementById("progress");
-  const progressText = document.getElementById("progress-text");
+// Resep rendah kalori (semua tombol diarahkan ke Google)
+const resepContainer = document.getElementById('resep-container');
+const resep = [
+  { nama: "Salad Sayur Segar", deskripsi: "Kombinasi sayur segar rendah kalori dengan dressing olive oil.", link: "https://www.google.com/search?q=salad+sayur+rendah+kalori" },
+  { nama: "Sup Brokoli", deskripsi: "Sup hangat brokoli rendah kalori, cocok untuk diet.", link: "https://www.google.com/search?q=sup+brokoli+rendah+kalori" },
+  { nama: "Oatmeal Buah", deskripsi: "Oatmeal sehat dengan topping buah-buahan segar.", link: "https://www.google.com/search?q=oatmeal+buah+sehat" },
+  { nama: "Smoothie Hijau", deskripsi: "Campuran bayam, pisang, dan susu almond yang segar.", link: "https://www.google.com/search?q=smoothie+bayam+pisang" },
+  { nama: "Tumis Tahu Sayur", deskripsi: "Tahu ditumis dengan sayuran rendah kalori, kaya protein.", link: "https://www.google.com/search?q=tumis+tahu+sayur+sehat" },
+  { nama: "Ikan Panggang Lemon", deskripsi: "Ikan dipanggang dengan perasan lemon, rendah lemak & enak.", link: "https://www.google.com/search?q=ikan+panggang+lemon+diet" }
+];
 
-  if (!totalEl || !progressEl || !progressText) return;
+resep.forEach(item => {
+  const card = document.createElement('div');
+  card.classList.add('resep-card');
+  card.innerHTML = `
+    <h3>${item.nama}</h3>
+    <p>${item.deskripsi}</p>
+    <a href="${item.link}" target="_blank">Lihat Resep</a>
+  `;
+  resepContainer.appendChild(card);
+});
 
-  totalEl.innerText = `Total: ${totalKalori} / ${targetKalori} kkal`;
-
-  const persen = Math.min((totalKalori / targetKalori) * 100, 100);
-  progressEl.style.width = persen + "%";
-  progressText.innerText = Math.round(persen) + "%";
-
-  if (totalKalori > targetKalori) {
-    progressEl.style.background = "red";
-  } else if (totalKalori >= targetKalori * 0.75) {
-    progressEl.style.background = "gold";
-  } else {
-    progressEl.style.background = "#1b8f5a";
-  }
-}
+// Hamburger menu (responsive)
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
