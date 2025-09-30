@@ -1,2 +1,117 @@
-table{border-collapse:collapse}
-table tr td, table tr th{padding:10px;border-bottom:1px solid #f3f3f3}
+/* ===========================
+   Global reset
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4faf6;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===========================
+   Container & Card (samain Dashboard)
+   =========================== */
+.container {
+  max-width: 1100px !important; /* sama seperti dashboard */
+  width: 100% !important;
+  margin: 30px auto !important;
+  padding: 50px !important;
+  box-sizing: border-box;
+}
+
+.container .card {
+  width: 100% !important;
+  padding: 28px 32px;
+  min-height: 260px; /* biar kotak kelihatan lebih besar */
+  border-radius: 16px;
+  background: linear-gradient(145deg, #ffe6f0, #ffd6eb); /* pink lembut */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.logo i {
+  font-size: 22px;   /* lebih gede biar jelas */
+  color: #fff;       /* putih biar kontras sama navbar hijau */
+}
+
+
+/* ===========================
+   Table styling
+   =========================== */
+table {
+  border-collapse: collapse;
+  width: 100% !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #fff;
+  margin-top: 15px;
+}
+
+table thead {
+  background: linear-gradient(135deg, #157347, #039853); /* hijau botol → teal */
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table th,
+table td {
+  padding: 16px 18px; /* lebih besar biar lega */
+  text-align: left;
+  font-size: 15px;
+}
+
+table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background: #e0f2f1;
+  transition: background 0.2s ease;
+}
+
+/* ===========================
+   Tombol di tabel
+   =========================== */
+table td button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+table td button.edit {
+  background: #1b8f5a;
+  color: #fff;
+}
+
+table td button.edit:hover {
+  background: #157347;
+  transform: scale(1.05);
+}
+
+table td button.del {
+  background: #e53935;
+  color: #fff;
+  margin-left: 6px;
+}
+
+table td button.del:hover {
+  background: #c62828;
+  transform: scale(1.05);
+}

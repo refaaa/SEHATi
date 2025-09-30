@@ -1,98 +1,73 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>SEHATi — Dashboard</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEHATi — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-    <nav>
-        <div class="brand">
-            <div class="logo">S</div>
-            <div>SEHATi</div>
-        </div>
-        <div class="nav-links">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="history.html">Riwayat</a>
-            <a href="about.html">Tentang</a>
-            <a href="contact.html">Kontak</a>
-            <a href="profile.html">Profil</a>
-        </div>
-    </nav>
+  <!-- Navbar (sama dengan history.html) -->
+  <nav>
+    <div class="brand">
+      <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+      <div>SEHATi</div>
+    </div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="history.html">Riwayat</a>
+      <a href="profile.html">Profil</a>
+      <a href="about.html">Tentang</a>
+      <a href="contact.html">Kontak</a>
+    </div>
+  </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col" style="max-width:640px">
-                <div class="card">
-                    <h3>Tracking Kalori</h3>
-                    <p class="small">Tanggal: <span id="date-label"></span></p>
+  <!-- Konten Utama -->
+  <div class="container">
+    <!-- Tracking Kalori -->
+    <div class="card">
+      <h2>📊 Tracking Kalori</h2>
+      <p><strong>Tanggal:</strong> <span id="tanggal"></span></p>
+      <div class="form-input">
+        <input type="text" id="makanan" placeholder="Nama makanan">
+        <input type="number" id="kalori" placeholder="Kalori (kkal)">
+        <button class="btn" onclick="tambahMakanan()">Tambah</button>
+      </div>
 
-                    <form id="food-form" style="display:flex;gap:8px;align-items:center;margin-top:10px">
-                        <input type="text" id="food-name" placeholder="Nama makanan" required>
-                        <input type="number" id="food-cal" placeholder="kkal" required style="width:110px">
-                        <button class="btn" type="submit">Tambah</button>
-                    </form>
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div id="progress"><span id="progress-text">0%</span></div>
+      </div>
 
-                    <div style="margin-top:14px">
-                        <div class="progress">
-                            <div id="progress-bar" class="progress-bar">0%</div>
-                        </div>
-                        <p style="margin-top:8px">Total: <b id="total-cal">0</b> / <span id="target-cal">2000</span> kkal</p>
-                        <p id="warning" class="hidden" style="color:red;font-weight:bold;margin-top:6px"></p>
-                    </div>
-
-                    <div style="margin-top:14px">
-                        <h4>Entri Hari Ini</h4>
-                        <ul id="today-list" style="list-style:none;padding-left:0;margin-top:8px"></ul>
-                    </div>
-                </div>
-            </div>
-
-            <div style="width:360px">
-                <div class="card highlight-card" style="margin-top:12px">
-                    <h4>Artikel Singkat</h4>
-                    <div class="card-grid">
-                        <div class="card highlight-card">
-                            <h3>🍳 Tips Sarapan Sehat</h3>
-                            <p>Sarapan seimbang bantu metabolisme — pilih karbo kompleks + protein.</p>
-                        </div>
-
-                        <div class="card highlight-card ">
-                            <h3>🏃 Olahraga Ringan</h3>
-                            <p>30 menit jalan cepat cukup untuk mulai aktif setiap hari.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card highlight-card " style="margin-top:12px ">
-                    <h4>🥗 Resep Cepat</h4>
-                    <ul>
-                        <li>Salad sayur + telur rebus</li>
-                        <li>Oatmeal dengan buah & susu</li>
-                        <li>Smoothie pisang + susu almond</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      <p id="totalKalori">Total: 0 / 2000 kkal</p>
+      <h3>Entri Hari Ini</h3>
+      <ul id="daftarMakanan"></ul>
     </div>
 
-    <footer class="site-footer ">
-        <div>© 2025 SEHATi • Informatika Medik</div>
-        <div class="footer-icons ">
-            <a href="dashboard.html " title="Kembali ke Dashboard ">
-                <svg class="icon " viewBox="0 0 24 24 ">
-                    <path d="M12 2L2 9v13h7v-7h6v7h7V9z "/>
-                </svg>
-            </a>
-        </div>
-    </footer>
+    <!-- Resep Rendah Kalori -->
+    <div class="card">
+      <h2>🥦 Resep Rendah Kalori</h2>
+      <div id="resep-container" class="resep-container"></div>
+    </div>
+  </div>
 
-    <script src="js/main.js "></script>
-    <script src="js/dashboard.js "></script>
+  <!-- Footer (sama dengan history.html) -->
+  <footer class="site-footer">
+    <div>© 2025 SEHATi • Informatika Medik</div>
+    <div class="footer-icons">
+      <a href="dashboard.html" title="Kembali ke Dashboard">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M12 2L2 9v13h7v-7h6v7h7V9z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="js/dashboard.js"></script>
 </body>
-
 </html>

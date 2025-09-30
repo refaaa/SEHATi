@@ -1,145 +1,144 @@
-// dashboard logic
-document.addEventListener('DOMContentLoaded', () => {
-    requireLogin();
-    activateNav();
+// =====================
+// Tanggal otomatis
+// =====================
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("tanggal").innerText = today;
 
-    const user = currentUser();
-    const profiles = getProfiles();
-    const profile = profiles[user] || { target: 2000, name: user };
+let totalKalori = 0;
 
-    const dateLabel = document.getElementById('date-label');
-    const today = todayIso();
-    dateLabel.textContent = today;
+// =====================
+// Load data saat halaman dibuka
+// =====================
+document.addEventListener("DOMContentLoaded", loadMakanan);
 
-    const totalEl = document.getElementById('total-cal');
-    const targetEl = document.getElementById('target-cal');
-    targetEl.textContent = profile.target;
+function loadMakanan() {
+  let entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const user = (typeof currentUser === "function") ? currentUser() : "guest";
 
-    const progressBar = document.getElementById('progress-bar');
-    const todayList = document.getElementById('today-list');
-    const warning = document.getElementById('warning');
+  // 🔥 filter: hanya milik user saat ini + hanya hari ini
+  entries = entries.filter(e => e.email === user && e.date === today);
 
-    function loadToday() {
-        const entries = getEntries().filter(e => e.email === user && e.date === today);
-        renderList(entries);
+  document.getElementById("daftarMakanan").innerHTML = "";
+  totalKalori = 0;
 
-        const total = entries.reduce((s, e) => s + Number(e.cal), 0);
-        totalEl.textContent = total;
+  entries.forEach(e => {
+    totalKalori += e.cal;
+    const li = document.createElement("li");
+    li.innerHTML = `${e.food} - ${e.cal} kkal
+      <div>
+        <button onclick="editMakanan('${e.id}')">Edit</button>
+        <button onclick="hapusMakanan('${e.id}')">Hapus</button>
+      </div>`;
+    document.getElementById("daftarMakanan").appendChild(li);
+  });
 
-        const percent = Math.min(100, Math.round((total / profile.target) * 100));
-        progressBar.style.width = percent + '%';
-        progressBar.textContent = percent + '%';
+  updateTotal();
+}
 
-        // warna + warning
-        if (total < profile.target * 0.7) {
-            progressBar.style.background = 'green';
-            warning.classList.add("hidden");
-        } else if (total <= profile.target) {
-            progressBar.style.background = 'orange';
-            warning.classList.add("hidden");
-        } else {
-            progressBar.style.background = 'red';
-            warning.textContent = "⚠️ Anda sudah melebihi batas kalori harian!";
-            warning.classList.remove("hidden");
-        }
-    }
+// =====================
+// Tambah makanan
+// =====================
+function tambahMakanan() {
+  const makanan = document.getElementById("makanan").value.trim();
+  const kalori = parseInt(document.getElementById("kalori").value);
 
-    function renderList(entries) {
-        todayList.innerHTML = '';
-        if (entries.length === 0) {
-            todayList.innerHTML = '<li class="small" style="color:var(--muted)">Belum ada entri hari ini</li>';
-            return;
-        }
-        entries.forEach(en => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-              <div>
-                <strong>${escapeHtml(en.food)}</strong>
-                <div class="meta">${en.cal} kkal</div>
-              </div>
-              <div style="display:flex;gap:6px">
-                <button data-id="${en.id}" class="edit">Edit</button>
-                <button data-id="${en.id}" class="del">Hapus</button>
-              </div>`;
-            todayList.appendChild(li);
-        });
+  if (makanan && kalori) {
+    let entries = JSON.parse(localStorage.getItem("entries")) || [];
+    const entry = {
+      id: Date.now().toString(),
+      email: (typeof currentUser === "function") ? currentUser() : "guest",
+      food: makanan,
+      cal: kalori,
+      date: today // 🔥 simpan dengan tanggal hari ini
+    };
 
-        // attach actions
-        todayList.querySelectorAll('button.edit').forEach(b => {
-            b.addEventListener('click', () => editEntry(b.dataset.id));
-        });
-        todayList.querySelectorAll('button.del').forEach(b => {
-            b.addEventListener('click', () => deleteEntry(b.dataset.id));
-        });
-    }
+    entries.push(entry);
+    localStorage.setItem("entries", JSON.stringify(entries));
 
-    function addFood(e) {
-        e.preventDefault();
-        const nameInput = document.getElementById('food-name');
-        const calInput = document.getElementById('food-cal');
+    loadMakanan();
 
-        const name = nameInput.value.trim();
-        const cal = parseFloat(calInput.value);
+    document.getElementById("makanan").value = "";
+    document.getElementById("kalori").value = "";
+  }
+}
 
-        if (!name || isNaN(cal) || cal <= 0) {
-            alert('Masukkan nama makanan dan kalori yang benar!');
-            return;
-        }
+// =====================
+// Update total + progress bar
+// =====================
+function updateTotal() {
+  const totalEl = document.getElementById("totalKalori");
+  const progressEl = document.getElementById("progress");
+  const progressText = document.getElementById("progress-text");
 
-        const entries = getEntries();
-        const newEntry = {
-            id: 'id' + Date.now(),
-            email: user,
-            date: today,
-            food: name,
-            cal: cal
-        };
-        entries.push(newEntry);
-        saveEntries(entries);
+  const persen = Math.min((totalKalori / 2000) * 100, 100);
+  totalEl.innerText = `Total: ${totalKalori} / 2000 kkal`;
 
-        nameInput.value = '';
-        calInput.value = '';
-        nameInput.focus(); // auto-focus
+  progressEl.style.width = persen + "%";
+  progressText.innerText = Math.round(persen) + "%";
 
-        loadToday();
-    }
+  if (totalKalori > 2000) {
+    progressEl.style.background = "red";
+  } else if (totalKalori >= 1500) {
+    progressEl.style.background = "gold";
+  } else {
+    progressEl.style.background = "#1b8f5a";
+  }
+}
 
-    function deleteEntry(id) {
-        if (!confirm('Hapus entri ini?')) return;
-        let entries = getEntries();
-        entries = entries.filter(e => e.id !== id);
-        saveEntries(entries);
-        loadToday();
-    }
+// =====================
+// Edit makanan
+// =====================
+function editMakanan(id) {
+  let entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const idx = entries.findIndex(e => e.id === id);
+  if (idx === -1) return;
 
-    function editEntry(id) {
-        const entries = getEntries();
-        const idx = entries.findIndex(e => e.id === id);
-        if (idx === -1) return alert('Entri tidak ditemukan');
+  const newNama = prompt("Edit nama makanan:", entries[idx].food);
+  const newKalori = parseInt(prompt("Edit kalori:", entries[idx].cal));
 
-        const cur = entries[idx];
+  if (newNama && newKalori) {
+    entries[idx].food = newNama;
+    entries[idx].cal = newKalori;
+    localStorage.setItem("entries", JSON.stringify(entries));
+    loadMakanan();
+  }
+}
 
-        // perbaikan optional chaining
-        const foodPrompt = prompt('Ubah nama makanan', cur.food);
-        if (foodPrompt === null) return;
-        const newFood = foodPrompt.trim();
+// =====================
+// Hapus makanan
+// =====================
+function hapusMakanan(id) {
+  if (!confirm("Hapus entri ini?")) return;
 
-        const newCalStr = prompt('Ubah kalori (kkal)', cur.cal);
-        if (newCalStr === null) return;
-        const newCal = parseFloat(newCalStr);
+  let entries = JSON.parse(localStorage.getItem("entries")) || [];
+  entries = entries.filter(e => e.id !== id);
+  localStorage.setItem("entries", JSON.stringify(entries));
 
-        entries[idx].food = newFood || cur.food;
-        entries[idx].cal = !isNaN(newCal) && newCal > 0 ? newCal : cur.cal;
+  loadMakanan();
+}
 
-        saveEntries(entries);
-        loadToday();
-    }
+// =====================
+// Resep Rendah Kalori
+// =====================
+const resepList = [
+  { nama: "Salad Sayur Segar", deskripsi: "Kombinasi sayur segar rendah kalori dengan dressing olive oil.", link: "https://www.google.com/search?q=salad+sayur+rendah+kalori" },
+  { nama: "Sup Brokoli", deskripsi: "Sup hangat brokoli rendah kalori, cocok untuk diet.", link: "https://www.google.com/search?q=sup+brokoli+rendah+kalori" },
+  { nama: "Oatmeal Buah", deskripsi: "Oatmeal sehat dengan topping buah-buahan segar.", link: "https://www.google.com/search?q=oatmeal+buah+sehat" },
+  { nama: "Smoothie Hijau", deskripsi: "Campuran bayam, pisang, dan susu almond yang segar.", link: "https://www.google.com/search?q=smoothie+bayam+pisang" },
+  { nama: "Tumis Tahu Sayur", deskripsi: "Tahu ditumis dengan sayuran rendah kalori, kaya protein.", link: "https://www.google.com/search?q=tumis+tahu+sayur+sehat" },
+  { nama: "Ikan Panggang Lemon", deskripsi: "Ikan dipanggang dengan perasan lemon, rendah lemak & enak.", link: "https://www.google.com/search?q=ikan+panggang+lemon+diet" }
+];
 
-    document.getElementById('food-form').addEventListener('submit', addFood);
-    loadToday();
-});
-
-/* tiny helpers */
-function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const resepContainer = document.getElementById("resep-container");
+if (resepContainer) {
+  resepList.forEach(resep => {
+    const div = document.createElement("div");
+    div.className = "resep-card";
+    div.innerHTML = `
+      <h3>${resep.nama}</h3>
+      <p>${resep.deskripsi}</p>
+      <a href="${resep.link}" target="_blank">Lihat Resep</a>
+    `;
+    resepContainer.appendChild(div);
+  });
 }
