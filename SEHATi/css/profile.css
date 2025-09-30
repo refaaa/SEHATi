@@ -9,7 +9,6 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4faf6;
-    /* hijau muda → pink soft background */
     color: #333;
     min-height: 100vh;
     display: flex;
@@ -17,62 +16,53 @@ body {
 }
 
 
-/* ===== Navbar ===== */
-
+/* ===== Navbar (samakan dengan about.css) ===== */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(135deg, #004d40, #00695c);
-    /* greenish gradient */
-    color: #fff;
-    padding: 12px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid #00695c;
-    /* border color matching gradient */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #1b8f5a, #157347); /* hijau gradasi */
+  color: #fff;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid #00695c;
 }
 
 nav .brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    font-size: 18px;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
 }
 
 nav .logo {
-    font-size: 20px;
-    color: #fff;
+  font-size: 20px;
+  color: #fff;
 }
 
 .nav-links {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    background: #004d40;
-    /* dark green background */
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: 0.25s;
+  background: transparent; /* tidak ada background */
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.25s;
 }
-
 .nav-links a:hover,
 .nav-links a.active {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    border: none;
-    transform: scale(1.13);
-    box-shadow: 0 4px 18px rgba(33, 33, 33, 0.12);
+  color: #FFD700; /* kuning emas */
+  transform: scale(1.1);
 }
-
 
 /* hamburger */
 
@@ -117,7 +107,7 @@ nav .logo {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #e75480;
+    color: #157347;
     /* pink tua */
 }
 
@@ -152,7 +142,7 @@ nav .logo {
 
 #profile-form input:focus,
 #profile-form select:focus {
-    border-color: #e75480;
+    border-color: #157347;
     /* pink tua */
     outline: none;
     box-shadow: 0 0 6px rgba(231, 84, 128, 0.25);
@@ -177,13 +167,13 @@ nav .logo {
 }
 
 .save-btn {
-    background: #e75480;
+    background: #1b8f5a;
     /* tombol utama pink tua */
     color: #fff;
 }
 
 .save-btn:hover {
-    background: #c7436a;
+    background: #157347;
 }
 
 .logout-btn {
@@ -199,15 +189,19 @@ nav .logo {
 /* ===== Footer ===== */
 
 .site-footer {
-    background: #00695c;
-    color: #eee;
-    padding: 15px 20px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  background: linear-gradient(135deg, #1b8f5a, #157347); /* sama seperti navbar */
+  border-top: none; /* hilangkan garis atas */
+  padding: 14px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  flex-wrap: wrap;
+  text-align: center;
+  color: #fff;
 }
+
 
 
 /* ===== Responsive ===== */

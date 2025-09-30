@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function requireLogin() {
     const user = sessionStorage.getItem("sehati_user");
     if (!user) {
-        alert("Anda harus login terlebih dahulu!");
         window.location.href = "index.html"; // arahkan ke login/index
     }
 }

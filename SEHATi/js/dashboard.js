@@ -1,3 +1,6 @@
+// Cek login dulu
+    requireLogin();
+    activateNav();
 // =====================
 // Tanggal otomatis
 // =====================
@@ -18,18 +21,22 @@ function loadMakanan() {
   // 🔥 filter: hanya milik user saat ini + hanya hari ini
   entries = entries.filter(e => e.email === user && e.date === today);
 
-  document.getElementById("daftarMakanan").innerHTML = "";
+  const daftar = document.getElementById("daftarMakanan");
+  daftar.innerHTML = "";
   totalKalori = 0;
 
   entries.forEach(e => {
     totalKalori += e.cal;
+
     const li = document.createElement("li");
-    li.innerHTML = `${e.food} - ${e.cal} kkal
-      <div>
-        <button onclick="editMakanan('${e.id}')">Edit</button>
-        <button onclick="hapusMakanan('${e.id}')">Hapus</button>
-      </div>`;
-    document.getElementById("daftarMakanan").appendChild(li);
+    li.innerHTML = `
+      <span class="food-info"><strong>${e.food}</strong> - ${e.cal} kkal</span>
+      <div class="btn-group">
+        <button class="edit" onclick="editMakanan('${e.id}')">Edit</button>
+        <button class="del" onclick="hapusMakanan('${e.id}')">Hapus</button>
+      </div>
+    `;
+    daftar.appendChild(li);
   });
 
   updateTotal();
@@ -142,3 +149,10 @@ if (resepContainer) {
     resepContainer.appendChild(div);
   });
 }
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("show");
+});
+

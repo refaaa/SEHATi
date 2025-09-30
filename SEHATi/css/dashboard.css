@@ -9,82 +9,102 @@ body {
   background-color: #f4faf6;
   color: #333;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* ====== NAVBAR & FOOTER ====== */
-nav, 
-.site-footer {
-  background: #1b8f5a; /* hijau pastel muda */
+/* ===== NAVBAR ===== */
+.navbar {
+  background: #1b8f5a;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
-}
-
-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 30px;
+  padding: 14px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.navbar .brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.navbar .logo {
+  font-weight: bold;
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
 }
 
-.navbar .logo i {
-  font-size: 22px;
-  color: #fff; /* putih biar kontras */
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
-.navbar .nav-links a {
+.nav-links a {
   color: #fff;
   text-decoration: none;
-  margin-left: 20px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.navbar .nav-links a:hover,
-.navbar .nav-links a.active {
-  background: #fff;
-  color: #157347; /* hijau lebih tua saat hover */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #1b8f5a;
+    flex-direction: column;
+    width: 200px;
+    text-align: right;
+    padding: 10px 20px;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
 
 /* ====== FOOTER ====== */
 .site-footer {
+  background: #157347;
+  border-top: 1px solid #eee;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  flex-wrap: wrap;
   text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  font-size: 0.9rem;
-}
-
-.site-footer .footer-icons a {
   color: #fff;
-  margin-left: 10px;
-  font-size: 18px;
-  transition: color 0.3s ease;
 }
 
-.site-footer .footer-icons a:hover {
-  color: #157347; /* hijau sedikit lebih tua pas hover */
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
-
 
 /* ====== CONTAINER ====== */
 .container {
   max-width: 1100px;
   margin: 30px auto;
   padding: 20px;
+  flex: 1;
 }
 
 /* ====== CARD ====== */
 .card {
-  background: linear-gradient(145deg, #ffe6f0, #ffd6eb); /* gradien pink lembut */
+  background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
   padding: 20px;
   margin-bottom: 25px;
   border-radius: 16px;
@@ -156,7 +176,7 @@ nav {
 
 /* Tombol Edit & Hapus */
 #daftarMakanan button:first-child {
-  background: #ffc107; /* kuning (Edit) */
+  background: #ffc107;
   color: #333;
 }
 
@@ -165,7 +185,7 @@ nav {
 }
 
 #daftarMakanan button:last-child {
-  background: #dc3545; /* merah (Hapus) */
+  background: #dc3545;
 }
 
 #daftarMakanan button:last-child:hover {
@@ -175,7 +195,7 @@ nav {
 /* ====== RESEP RENDAH KALORI ====== */
 .resep-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* selalu 3 kolom */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 15px;
 }
@@ -236,15 +256,15 @@ nav {
 }
 
 #totalKalori.safe {
-  color: #1b8f5a; /* hijau */
+  color: #1b8f5a;
 }
 
 #totalKalori.warning {
-  color: #ffc107; /* kuning */
+  color: #ffc107;
 }
 
 #totalKalori.over-limit {
-  color: #dc3545; /* merah */
+  color: #dc3545;
 }
 
 /* ====== PROGRESS BAR ====== */
@@ -260,7 +280,7 @@ nav {
 #progress {
   height: 100%;
   width: 0%;
-  background: #1b8f5a; /* default hijau */
+  background: #1b8f5a;
   border-radius: 20px;
   display: flex;
   align-items: center;

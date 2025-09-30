@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterSelect = document.getElementById("filter-select");
   const filterDate = document.getElementById("filter-date");
 
+  // Cek login dulu
+    requireLogin();
+    activateNav();
+
   function load() {
     let entries = JSON.parse(localStorage.getItem("entries")) || [];
     const f = filterSelect.value;

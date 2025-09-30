@@ -65,7 +65,7 @@ nav {
    =========================== */
 
 .login-card {
-    background: #fff;
+    background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
     padding: 24px 28px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -112,12 +112,12 @@ nav {
 }
 
 #login-form input:focus {
-    border-color: #42a5f5;
+    border-color: #1b8f5a;
     box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.2);
 }
 
 #login-form button.btn {
-    background: #42a5f5;
+    background: #1b8f5a;
     color: #fff;
     font-weight: 600;
     border: none;
@@ -129,7 +129,7 @@ nav {
 }
 
 #login-form button.btn:hover {
-    background: #1e88e5;
+    background: #1b8f5a;
 }
 
 #login-error {
