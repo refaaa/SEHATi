@@ -1,41 +1,77 @@
 // index.js - behavior untuk halaman login
-document.addEventListener('DOMContentLoaded', () => {
-    activateNav(); // fungsi ini ada di main.js
+document.addEventListener("DOMContentLoaded", () => {
+    // aktifkan nav kalau ada
+    if (typeof activateNav === "function") {
+        activateNav();
+    }
 
-    const form = document.getElementById('login-form');
-    const errEl = document.getElementById('login-error');
+    const form = document.getElementById("login-form");
+    const errEl = document.getElementById("login-error");
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Matikan auto-complete browser
+    if (form) {
+        form.setAttribute("autocomplete", "off");
+        form.email.setAttribute("autocomplete", "off");
+        form.password.setAttribute("autocomplete", "off");
 
-        const email = form.email.value.trim().toLowerCase();
-        const password = form.password.value.trim();
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-        // validasi input kosong
-        if (!email || !password) {
-            errEl.textContent = 'Email dan password harus diisi.';
-            errEl.style.display = 'block';
-            return;
-        }
+            const email = form.email.value.trim().toLowerCase();
+            const password = form.password.value.trim();
 
-        // ambil data profiles dari localStorage
-        const profiles = getProfiles();
+            // validasi input kosong
+            if (!email || !password) {
+                errEl.textContent = "Email dan password harus diisi.";
+                errEl.style.display = "block";
+                return;
+            }
 
-        // kalau email belum ada, buat profil default
-        if (!profiles[email]) {
-            profiles[email] = {
-                name: email.split('@')[0],
-                email: email,
-                target: 2000
-                    // bisa ditambah "password" kalau mau validasi
-            };
-            saveProfiles(profiles);
-        }
+            // ambil data profiles dari localStorage
+            const profiles = getProfiles();
 
-        // simpan user yang sedang login di session
-        sessionStorage.setItem('sehati_user', email);
+            // kalau email belum ada → buat profil default
+            if (!profiles[email]) {
+                profiles[email] = {
+                    name: email.split("@")[0],
+                    email: email,
+                    target: 2000,
+                    // bisa ditambah field password di sini kalau mau validasi real
+                };
+                saveProfiles(profiles);
+            }
 
-        // pindah ke dashboard
-        window.location.href = 'dashboard.html';
-    });
+            // simpan user yang sedang login di session
+            sessionStorage.setItem("sehati_user", email);
+
+            // pindah ke dashboard
+            window.location.href = "dashboard.html";
+        });
+    }
 });
+
+/**
+ * Fungsi proteksi halaman lain
+ * Taruh di file JS halaman lain (dashboard.js, history.js, profile.js, dll)
+ */
+function requireLogin() {
+    const user = sessionStorage.getItem("sehati_user");
+    if (!user) {
+        alert("Silakan login terlebih dahulu!");
+        window.location.href = "index.html"; // balik ke login kalau belum login
+    }
+}
+
+/**
+ * Helper untuk ambil profiles dari localStorage
+ */
+function getProfiles() {
+    return JSON.parse(localStorage.getItem("profiles") || "{}");
+}
+
+/**
+ * Helper untuk simpan profiles ke localStorage
+ */
+function saveProfiles(profiles) {
+    localStorage.setItem("profiles", JSON.stringify(profiles));
+}
