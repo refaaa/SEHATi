@@ -150,6 +150,40 @@
    ======================== */
 
 
+   /* Hamburger button */
+.menu-toggle {
+    display: none;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* tampil hanya di mobile */
+    }
+
+    .nav-links {
+        display: none; /* disembunyikan default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: linear-gradient(135deg, #1b8f5a, #157347);
+        padding: 1rem;
+        border-radius: 8px;
+        width: 180px;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* muncul kalau ada class active */
+    }
+}
+
 /* Navbar responsif */
 
 @media (max-width: 900px) {
