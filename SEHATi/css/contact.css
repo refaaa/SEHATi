@@ -1,11 +1,93 @@
-/* ====== KHUSUS HALAMAN KONTAK ====== */
+/* =======================
+   NAVBAR GLOBAL
+   ======================= */
+.navbar {
+  background: #1b8f5a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-/* Container */
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar .logo i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffd700;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #1b8f5a;
+    flex-direction: column;
+    width: 200px;
+    text-align: right;
+    padding: 10px 20px;
+    display: none;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* =======================
+   KHUSUS HALAMAN KONTAK
+   ======================= */
+body.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .contact-page .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
   text-align: center;
+  flex: 1;
 }
 
 /* Judul */
@@ -22,9 +104,9 @@
   margin-bottom: 25px;
 }
 
-/* Card di halaman kontak */
+/* Card */
 .contact-page .card {
-  background: linear-gradient(135deg, #ffe6f0, #ffd6eb); /* gradien pink */
+  background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
   padding: 20px;
   margin-bottom: 25px;
   border-radius: 14px;
@@ -38,14 +120,12 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Judul di dalam card */
 .contact-page .card h3 {
   margin-bottom: 12px;
   color: #1b8f5a;
   font-size: 20px;
 }
 
-/* Link di dalam card */
 .contact-page .card a {
   color: #157347;
   text-decoration: none;
@@ -82,7 +162,33 @@
   transform: translateY(-2px);
 }
 
-/* Responsif */
+/* Footer */
+.site-footer {
+  background: #157347;
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px;
+  margin-top: auto;
+}
+
+/* =======================
+   RESPONSIVE FIX
+   ======================= */
+@media (max-width: 768px) {
+  .contact-page .container {
+    padding: 15px;
+  }
+
+  .contact-page .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .contact-page h2 {
+    font-size: 22px;
+  }
+}
+
 @media (max-width: 600px) {
   .contact-page .tombol-wrapper {
     flex-direction: column;

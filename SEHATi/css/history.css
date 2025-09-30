@@ -1,5 +1,5 @@
 /* ===========================
-   Global reset
+   RESET & BODY
    =========================== */
 * {
   margin: 0;
@@ -8,68 +8,197 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4faf6;
   color: #333;
   line-height: 1.6;
-}
-/* ====== FOOTER ====== */
-.site-footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  font-size: 0.9rem;
-}
-
-.site-footer .footer-icons a {
-  color: #fff;
-  margin-left: 10px;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.site-footer .footer-icons a:hover {
-  color: #157347; /* hijau sedikit lebih tua pas hover */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ===========================
-   Container & Card (samain Dashboard)
+   NAVBAR (sama seperti profile)
    =========================== */
-.container {
-  max-width: 1100px !important; /* sama seperti dashboard */
-  width: 100% !important;
-  margin: 30px auto !important;
-  padding: 50px !important;
-  box-sizing: border-box;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #1b8f5a, #157347);
+  color: #fff;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid #00695c;
 }
 
-.container .card {
-  width: 100% !important;
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+
+nav .logo {
+  font-size: 20px;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #FFD700;
+  transform: scale(1.1);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* tampil hanya di mobile */
+  }
+
+  .nav-links {
+    display: none; /* disembunyikan default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: linear-gradient(135deg, #1b8f5a, #157347);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 180px;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex; /* muncul kalau ada class active */
+  }
+}
+
+/* ===========================
+   CONTAINER & CARD
+   =========================== */
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+  flex: 1;
+}
+
+.card {
+  background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
   padding: 28px 32px;
-  min-height: 260px; /* biar kotak kelihatan lebih besar */
   border-radius: 16px;
-  background: linear-gradient(145deg, #ffe6f0, #ffd6eb); /* pink lembut */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container .card:hover {
+.card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-.logo i {
-  font-size: 22px;   /* lebih gede biar jelas */
-  color: #fff;       /* putih biar kontras sama navbar hijau */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Responsive Card */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
 
 /* ===========================
-   Table styling
+   FILTER BAR
+   =========================== */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.filter-bar select,
+.filter-bar input,
+.filter-bar .btn {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.filter-bar .btn {
+  background: #1b8f5a;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.filter-bar .btn:hover {
+  background: #157347;
+}
+
+/* Responsive Filter Bar */
+@media (max-width: 480px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-bar select,
+  .filter-bar input,
+  .filter-bar .btn {
+    width: 100%;
+  }
+}
+
+/* ===========================
+   TABLE
    =========================== */
 table {
   border-collapse: collapse;
-  width: 100% !important;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -78,7 +207,7 @@ table {
 }
 
 table thead {
-  background: linear-gradient(135deg, #157347, #039853); /* hijau botol → teal */
+  background: linear-gradient(135deg, #157347, #039853);
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
@@ -87,7 +216,7 @@ table thead {
 
 table th,
 table td {
-  padding: 16px 18px; /* lebih besar biar lega */
+  padding: 14px 16px;
   text-align: left;
   font-size: 15px;
 }
@@ -101,13 +230,21 @@ table tbody tr:hover {
   transition: background 0.2s ease;
 }
 
+/* Responsive Table */
+@media (max-width: 600px) {
+  table th, table td {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+}
+
 /* ===========================
-   Tombol di tabel
+   TOMBOL DI TABEL
    =========================== */
 table td button {
   border: none;
   border-radius: 6px;
-  padding: 8px 14px;
+  padding: 6px 12px;
   cursor: pointer;
   font-weight: 600;
   transition: background 0.2s ease, transform 0.2s ease;
@@ -119,7 +256,7 @@ table td button.edit {
 }
 
 table td button.edit:hover {
-  background: #ffc107;
+  background: #e0a800;
   transform: scale(1.05);
 }
 
@@ -134,15 +271,20 @@ table td button.del:hover {
   transform: scale(1.05);
 }
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 900px) {
-  .resep-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* ===========================
+   FOOTER
+   =========================== */
+.site-footer {
+  background: linear-gradient(135deg, #1b8f5a, #157347);
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px;
+  margin-top: auto;
 }
 
-@media (max-width: 600px) {
-  .resep-container {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .site-footer {
+    font-size: 13px;
+    padding: 12px 15px;
   }
 }

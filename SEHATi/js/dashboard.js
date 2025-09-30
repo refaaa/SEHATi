@@ -3,9 +3,13 @@
     activateNav();
 // =====================
 // Tanggal otomatis
-// =====================
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("tanggal").innerText = today;
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("tanggal").innerText = today;
+  loadMakanan();
+});
+
+
 
 let totalKalori = 0;
 

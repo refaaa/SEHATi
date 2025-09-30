@@ -2,11 +2,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.getElementById("history-body");
   const filterSelect = document.getElementById("filter-select");
   const filterDate = document.getElementById("filter-date");
+  const btnFilter = document.getElementById("btn-filter");
 
-  // Cek login dulu
-    requireLogin();
-    activateNav();
+  // ===== Navbar hamburger toggle =====
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Tutup menu ketika link diklik (biar rapi di mobile)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // ===== Load & filter entries =====
   function load() {
     let entries = JSON.parse(localStorage.getItem("entries")) || [];
     const f = filterSelect.value;
@@ -29,7 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // urut terbaru dulu
-    entries.sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+    entries.sort(
+      (a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id)
+    );
 
     entries.forEach(e => {
       const tr = document.createElement("tr");
@@ -46,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // edit & hapus fungsi sama seperti sebelumnya
+  // ===== Edit & Hapus =====
   tbody.addEventListener("click", e => {
     if (e.target.classList.contains("edit")) {
       let entries = JSON.parse(localStorage.getItem("entries")) || [];
@@ -55,10 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const newFood = prompt("Edit nama makanan:", entries[idx].food);
       const newCal = parseInt(prompt("Edit kalori:", entries[idx].cal));
-      if (newFood && newCal) {
+      if (newFood && !isNaN(newCal)) {
         entries[idx].food = newFood;
         entries[idx].cal = newCal;
         localStorage.setItem("entries", JSON.stringify(entries));
+        load();
       }
     }
 
@@ -71,9 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // tombol filter
-  document.getElementById("btn-filter").addEventListener("click", load);
+  // ===== Tombol filter =====
+  btnFilter.addEventListener("click", load);
 
-  // ⚠️ Jangan panggil load() di awal
-  // load();  <-- hapus baris ini
+  // Muat awal
+  load();
 });

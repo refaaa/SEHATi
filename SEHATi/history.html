@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="id">
-
 <head>
   <meta charset="utf-8">
   <title>SEHATi — Riwayat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/history.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,7 +17,12 @@
       <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
       <div>SEHATi</div>
     </div>
-    <div class="nav-links">
+
+    <!-- hamburger -->
+
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>    
+    <!-- menu -->
+    <div class="nav-links" id="navMenu">
       <a href="dashboard.html">Dashboard</a>
       <a href="history.html" class="active">Riwayat</a>
       <a href="about.html">Tentang</a>
@@ -27,10 +32,10 @@
   </nav>
 
   <!-- Konten -->
-  <div class="container">
+  <main class="container">
     <div class="card">
       <h3>Riwayat Makanan</h3>
-      <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+      <div class="filter-bar">
         <select id="filter-select">
           <option value="all">Semua</option>
           <option value="today">Hari ini</option>
@@ -39,8 +44,8 @@
         <button id="btn-filter" class="btn">Terapkan</button>
       </div>
 
-      <div style="margin-top:12px;overflow:auto">
-        <table width="100%" cellpadding="8" cellspacing="0" border="0">
+      <div class="table-wrapper">
+        <table>
           <thead>
             <tr>
               <th>Makanan</th>
@@ -59,7 +64,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -67,8 +72,6 @@
   </footer>
 
   <!-- JS -->
-  <script src="js/main.js"></script>
   <script src="js/history.js"></script>
 </body>
-
 </html>

@@ -1,3 +1,4 @@
+/* ========== RESET & BODY ========== */
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4faf6;
   color: #333;
   line-height: 1.6;
@@ -14,7 +15,7 @@ body {
   min-height: 100vh;
 }
 
-/* ===== NAVBAR ===== */
+/* ========== NAVBAR ========== */
 .navbar {
   background: #1b8f5a;
   color: #fff;
@@ -30,6 +31,9 @@ body {
 .navbar .logo {
   font-weight: bold;
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-links {
@@ -41,6 +45,12 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffd700;
 }
 
 .hamburger {
@@ -49,6 +59,7 @@ body {
   cursor: pointer;
 }
 
+/* Mobile menu */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -71,7 +82,7 @@ body {
   }
 }
 
-/* ====== FOOTER ====== */
+/* ========== FOOTER ========== */
 .site-footer {
   background: #157347;
   border-top: 1px solid #eee;
@@ -94,7 +105,7 @@ body {
   width: 100%;
 }
 
-/* ====== CONTAINER ====== */
+/* ========== CONTAINER ========== */
 .container {
   max-width: 1100px;
   margin: 30px auto;
@@ -102,7 +113,7 @@ body {
   flex: 1;
 }
 
-/* ====== CARD ====== */
+/* ========== CARD ========== */
 .card {
   background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
   padding: 20px;
@@ -118,11 +129,12 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* ====== FORM INPUT ====== */
+/* ========== FORM INPUT ========== */
 .form-input {
   margin: 15px 0;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .form-input input {
@@ -130,6 +142,7 @@ body {
   border-radius: 8px;
   border: 1px solid #ccc;
   flex: 1;
+  min-width: 150px;
 }
 
 .form-input button {
@@ -146,7 +159,7 @@ body {
   background: #157347;
 }
 
-/* ====== DAFTAR MAKANAN ====== */
+/* ========== DAFTAR MAKANAN ========== */
 #daftarMakanan {
   list-style: none;
 }
@@ -162,37 +175,34 @@ body {
 }
 
 #daftarMakanan button {
-  background: #1b8f5a;
-  color: white;
   border: none;
   border-radius: 6px;
   padding: 6px 12px;
   cursor: pointer;
+  margin-left: 6px;
 }
 
-#daftarMakanan button:hover {
-  background: #157347;
-}
-
-/* Tombol Edit & Hapus */
-#daftarMakanan button:first-child {
+/* Tombol edit */
+#daftarMakanan button.edit {
   background: #ffc107;
   color: #333;
 }
 
-#daftarMakanan button:first-child:hover {
+#daftarMakanan button.edit:hover {
   background: #e0a800;
 }
 
-#daftarMakanan button:last-child {
+/* Tombol hapus */
+#daftarMakanan button.del {
   background: #dc3545;
+  color: #fff;
 }
 
-#daftarMakanan button:last-child:hover {
+#daftarMakanan button.del:hover {
   background: #b02a37;
 }
 
-/* ====== RESEP RENDAH KALORI ====== */
+/* ========== RESEP RENDAH KALORI ========== */
 .resep-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -247,7 +257,7 @@ body {
   background: #147a48;
 }
 
-/* ====== TOTAL KALORI ====== */
+/* ========== TOTAL KALORI & PROGRESS ========== */
 #totalKalori {
   font-weight: bold;
   color: #1b8f5a;
@@ -255,19 +265,6 @@ body {
   font-size: 1.1rem;
 }
 
-#totalKalori.safe {
-  color: #1b8f5a;
-}
-
-#totalKalori.warning {
-  color: #ffc107;
-}
-
-#totalKalori.over-limit {
-  color: #dc3545;
-}
-
-/* ====== PROGRESS BAR ====== */
 .progress-bar {
   width: 100%;
   height: 30px;
@@ -294,13 +291,13 @@ body {
   color: #000;
 }
 
-/* ====== ANIMASI ====== */
+/* ========== ANIMASI ========== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ====== RESPONSIVE ====== */
+/* ========== RESPONSIVE GRID ========== */
 @media (max-width: 900px) {
   .resep-container {
     grid-template-columns: repeat(2, 1fr);
