@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>SEHATi — Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -14,10 +16,16 @@
     <!-- Navbar -->
     <nav>
         <div class="brand">
-             <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+            <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
             <div>SEHATi</div>
         </div>
-        <div class="nav-links">
+
+        <!-- Tombol hamburger -->
+        <button class="menu-toggle" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </button>
+
+        <div class="nav-links" id="nav-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="history.html">Riwayat</a>
             <a href="about.html">Tentang</a>
@@ -27,10 +35,10 @@
     </nav>
 
     <!-- Konten -->
-    <div class="container">
+    <main class="container">
         <div class="card profile-card">
             <div class="profile-header">
-                <h3> Profil & Pengaturan</h3>
+                <h3>Profil & Pengaturan</h3>
             </div>
 
             <form id="profile-form">
@@ -45,10 +53,10 @@
 
                 <label><span class="icon">⚧</span> Jenis Kelamin</label>
                 <select name="gender" required>
-        <option value="">- Pilih -</option>
-        <option value="L">Laki-laki</option>
-        <option value="P">Perempuan</option>
-      </select>
+          <option value="">- Pilih -</option>
+          <option value="L">Laki-laki</option>
+          <option value="P">Perempuan</option>
+        </select>
 
                 <label><span class="icon">🔥</span> Target Kalori Harian (kkal)</label>
                 <input type="number" name="target" required>
@@ -59,18 +67,16 @@
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
-    <div>© 2025 SEHATi • Informatika Medik</div>
-    <div class="footer-icons">
-      <a href="dashboard.html" title="Kembali ke Dashboard">
-      </a>
-    </div>
-  </footer>
+        <p>© 2025 SEHATi • Informatika Medik</p>
+    </footer>
 
     <!-- Script -->
     <script src="js/profile.js"></script>
+    <script src="js/profile-menu.js"></script>
 </body>
 
 </html>

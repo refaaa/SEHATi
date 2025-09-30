@@ -1,100 +1,263 @@
-/* Container Card */
+/* ===== Reset & Global ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4faf6;
+    /* hijau muda → pink soft background */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ===== Navbar ===== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #004d40, #00695c);
+    /* greenish gradient */
+    color: #fff;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #00695c;
+    /* border color matching gradient */
+}
+
+nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+}
+
+nav .logo {
+    font-size: 20px;
+    color: #fff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    background: #004d40;
+    /* dark green background */
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    transform: scale(1.13);
+    box-shadow: 0 4px 18px rgba(33, 33, 33, 0.12);
+}
+
+
+/* hamburger */
+
+.menu-toggle {
+    display: none;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* ===== Container & Card ===== */
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
 .card {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 35px;
-    margin: 50px auto;
-    max-width: 600px;
+    background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
+    /* gradien pink lembut */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 480px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
 
-/* Judul */
-
-.card h3 {
+.profile-header h3 {
+    text-align: center;
     font-size: 1.6rem;
     font-weight: 600;
-    color: #333;
-    /* abu gelap, netral */
-    text-align: center;
-    margin-bottom: 25px;
-    letter-spacing: 0.5px;
-    /* sedikit renggang biar modern */
+    margin-bottom: 20px;
+    color: #e75480;
+    /* pink tua */
 }
 
 
-/* Hilangkan garis hijau, diganti separator halus */
+/* ===== Form ===== */
 
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-/* Label */
-
-.card label {
-    display: block;
+#profile-form label {
     font-weight: 500;
-    margin-top: 15px;
-    margin-bottom: 6px;
+    font-size: 14px;
+    margin-bottom: 3px;
     color: #444;
-    font-size: 14px;
+    display: block;
 }
 
-
-/* Input & Select */
-
-.card input,
-.card select {
+#profile-form input,
+#profile-form select {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     font-size: 14px;
-    background: #fafafa;
-    transition: all 0.25s ease;
-}
-
-.card input:focus,
-.card select:focus {
-    border-color: #2e7d32;
     background: #fff;
-    outline: none;
-    box-shadow: 0 0 8px rgba(46, 125, 50, 0.2);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+#profile-form input:focus,
+#profile-form select:focus {
+    border-color: #e75480;
+    /* pink tua */
+    outline: none;
+    box-shadow: 0 0 6px rgba(231, 84, 128, 0.25);
+    background: #fff;
+}
 
-/* Tombol */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
 
 .btn {
     flex: 1;
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 10px;
+    border: none;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    border: none;
     transition: all 0.25s ease;
 }
 
-.btn[type="submit"] {
-    background: #2e7d32;
+.save-btn {
+    background: #e75480;
+    /* tombol utama pink tua */
     color: #fff;
 }
 
-.btn[type="submit"]:hover {
-    background: #256628;
+.save-btn:hover {
+    background: #c7436a;
 }
 
-#logout {
-    flex: 1;
+.logout-btn {
     background: #f2f2f2;
     color: #444;
-    border: none;
-    border-radius: 12px;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s ease;
 }
 
-#logout:hover {
+.logout-btn:hover {
     background: #e0e0e0;
+}
+
+
+/* ===== Footer ===== */
+
+.site-footer {
+    background: #00695c;
+    color: #eee;
+    padding: 15px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: linear-gradient(135deg, #ffafcc, #ff80ab);
+        padding: 1rem;
+        border-radius: 8px;
+        width: 180px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
+    .card {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 95%;
+    }
+    .profile-header h3 {
+        font-size: 1.2rem;
+    }
+    #profile-form input,
+    #profile-form select {
+        font-size: 13px;
+        min-height: 38px;
+    }
+    .site-footer {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 13px;
+    }
 }

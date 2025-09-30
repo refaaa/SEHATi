@@ -44,14 +44,24 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", () => {
             if (confirm("Yakin ingin logout?")) {
                 sessionStorage.removeItem("sehati_user");
-                // localStorage.removeItem("profile"); // kalau mau sekalian hapus profil
+                // localStorage.removeItem("profile"); // aktifkan jika mau hapus profil juga
                 window.location.href = "index.html";
             }
         });
     }
+
+    // --- Toggle menu hamburger ---
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+    }
 });
 
-// --- Tambahin fungsi requireLogin ---
+// --- Fungsi cek login ---
 function requireLogin() {
     const user = sessionStorage.getItem("sehati_user");
     if (!user) {
@@ -60,7 +70,16 @@ function requireLogin() {
     }
 }
 
-// --- Tambahin fungsi activateNav kalau belum ada ---
+// --- Fungsi aktifkan nav ---
 function activateNav() {
-    // isi sesuai kebutuhan, misal kasih highlight di menu
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
 }
