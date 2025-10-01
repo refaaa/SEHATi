@@ -1,290 +1,292 @@
 /* ===========================
    RESET & BODY
    =========================== */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4faf6;
-  color: #333;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4faf6;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+
 /* ===========================
-   NAVBAR (sama seperti profile)
+   NAVBAR 
    =========================== */
+
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(135deg, #1b8f5a, #157347);
-  color: #fff;
-  padding: 12px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 2px solid #00695c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #1b8f5a, #157347);
+    color: #fff;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #00695c;
 }
 
 nav .brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
 }
 
 nav .logo {
-  font-size: 20px;
-  color: #fff;
+    font-size: 20px;
+    color: #fff;
 }
 
 .nav-links {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-links a {
-  background: transparent;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: 0.25s;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.25s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #FFD700;
-  transform: scale(1.1);
+    color: #FFD700;
+    transform: scale(1.1);
 }
+
 
 /* Hamburger */
+
 .menu-toggle {
-  display: none;
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
 }
+
 
 /* Responsive Navbar */
+
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* tampil hanya di mobile */
-  }
-
-  .nav-links {
-    display: none; /* disembunyikan default */
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: linear-gradient(135deg, #1b8f5a, #157347);
-    padding: 1rem;
-    border-radius: 8px;
-    width: 180px;
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    display: flex; /* muncul kalau ada class active */
-  }
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: linear-gradient(135deg, #1b8f5a, #157347);
+        padding: 1rem;
+        border-radius: 8px;
+        width: 180px;
+        z-index: 999;
+    }
+    .nav-links.active {
+        display: flex;
+    }
 }
+
 
 /* ===========================
    CONTAINER & CARD
    =========================== */
+
 .container {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 20px;
-  flex: 1;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+    flex: 1;
 }
 
 .card {
-  background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
-  padding: 28px 32px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
+    padding: 28px 32px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive Card */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
 
-  .card {
-    padding: 20px;
-    border-radius: 12px;
-  }
+/* Responsive Card */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    .card {
+        padding: 20px;
+        border-radius: 12px;
+    }
 }
 
 @media (max-width: 480px) {
-  .card {
-    padding: 16px;
-    margin-bottom: 20px;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-  }
+    .card {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
 }
+
 
 /* ===========================
    FILTER BAR
    =========================== */
+
 .filter-bar {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
 }
 
 .filter-bar select,
 .filter-bar input,
 .filter-bar .btn {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 .filter-bar .btn {
-  background: #1b8f5a;
-  color: #fff;
-  cursor: pointer;
-  border: none;
-  font-weight: 600;
+    background: #1b8f5a;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
 }
 
 .filter-bar .btn:hover {
-  background: #157347;
+    background: #157347;
 }
+
 
 /* Responsive Filter Bar */
-@media (max-width: 480px) {
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
 
-  .filter-bar select,
-  .filter-bar input,
-  .filter-bar .btn {
-    width: 100%;
-  }
+@media (max-width: 480px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-bar select,
+    .filter-bar input,
+    .filter-bar .btn {
+        width: 100%;
+    }
 }
 
-/* ===========================
-   TABLE
-   =========================== */
 table {
-  border-collapse: collapse;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  background: #fff;
-  margin-top: 15px;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    margin-top: 15px;
 }
 
 table thead {
-  background: linear-gradient(135deg, #157347, #039853);
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #157347, #039853);
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 table th,
 table td {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 15px;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 15px;
 }
 
 table tbody tr:nth-child(even) {
-  background: #f9f9f9;
+    background: #f9f9f9;
 }
 
 table tbody tr:hover {
-  background: #e0f2f1;
-  transition: background 0.2s ease;
+    background: #e0f2f1;
+    transition: background 0.2s ease;
 }
 
-/* Responsive Table */
 @media (max-width: 600px) {
-  table th, table td {
-    font-size: 0.85rem;
-    padding: 10px 8px;
-  }
+    table th,
+    table td {
+        font-size: 0.85rem;
+        padding: 10px 8px;
+    }
 }
 
-/* ===========================
-   TOMBOL DI TABEL
-   =========================== */
 table td button {
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 table td button.edit {
-  background: #ffc107;
-  color: #333;
+    background: #ffc107;
+    color: #333;
 }
 
 table td button.edit:hover {
-  background: #e0a800;
-  transform: scale(1.05);
+    background: #e0a800;
+    transform: scale(1.05);
 }
 
 table td button.del {
-  background: #e53935;
-  color: #fff;
-  margin-left: 6px;
+    background: #e53935;
+    color: #fff;
+    margin-left: 6px;
 }
 
 table td button.del:hover {
-  background: #c62828;
-  transform: scale(1.05);
+    background: #c62828;
+    transform: scale(1.05);
 }
 
-/* ===========================
-   FOOTER
-   =========================== */
 .site-footer {
-  background: linear-gradient(135deg, #1b8f5a, #157347);
-  color: #fff;
-  text-align: center;
-  padding: 14px 20px;
-  margin-top: auto;
+    background: linear-gradient(135deg, #1b8f5a, #157347);
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    margin-top: auto;
 }
 
 @media (max-width: 480px) {
-  .site-footer {
-    font-size: 13px;
-    padding: 12px 15px;
-  }
+    .site-footer {
+        font-size: 13px;
+        padding: 12px 15px;
+    }
 }

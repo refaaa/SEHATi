@@ -1,6 +1,5 @@
-// index.js - behavior untuk halaman login
+// untuk halaman login
 document.addEventListener("DOMContentLoaded", () => {
-    // aktifkan nav kalau ada
     if (typeof activateNav === "function") {
         activateNav();
     }
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     name: email.split("@")[0],
                     email: email,
                     target: 2000,
-                    // bisa ditambah field password di sini kalau mau validasi real
                 };
                 saveProfiles(profiles);
             }
@@ -50,28 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/**
- * Fungsi proteksi halaman lain
- * Taruh di file JS halaman lain (dashboard.js, history.js, profile.js, dll)
- */
+//Fungsi proteksi halaman lain
 function requireLogin() {
     const user = sessionStorage.getItem("sehati_user");
     if (!user) {
         alert("Silakan login terlebih dahulu!");
-        window.location.href = "index.html"; // balik ke login kalau belum login
+        window.location.href = "index.html"; // balik ke login kalo belum login
     }
 }
 
-/**
- * Helper untuk ambil profiles dari localStorage
- */
+// Helper untuk ambil profiles dari localStorage
 function getProfiles() {
     return JSON.parse(localStorage.getItem("profiles") || "{}");
 }
 
-/**
- * Helper untuk simpan profiles ke localStorage
- */
+// Helper untuk simpan profiles ke localStorage
 function saveProfiles(profiles) {
     localStorage.setItem("profiles", JSON.stringify(profiles));
 }

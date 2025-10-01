@@ -73,9 +73,6 @@
   }
 }
 
-/* =======================
-   KHUSUS HALAMAN KONTAK
-   ======================= */
 body.contact-page {
   display: flex;
   flex-direction: column;
@@ -172,7 +169,7 @@ body.contact-page {
 }
 
 /* =======================
-   RESPONSIVE FIX
+   RESPONSIVE 
    ======================= */
 @media (max-width: 768px) {
   .contact-page .container {

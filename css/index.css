@@ -1,60 +1,64 @@
 /* ====== NAVBAR & FOOTER ====== */
-nav, .site-footer {
-  background: #1b8f5a;
-  font-family: 'Poppins', sans-serif;
+
+nav,
+.site-footer {
+    background: #1b8f5a;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
 }
 
 .navbar .logo i {
-  font-size: 22px;
+    font-size: 22px;
 }
 
 .nav-links {
-  display: flex;
-  gap: 12px;
+    display: flex;
+    gap: 12px;
 }
 
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: #fff;
-  color: #157347;
+    color: #ffd700;
 }
+
 
 /* Hamburger menu */
+
 .hamburger {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #fff;
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
 }
 
+
 /* Mobile nav */
+
 @media (max-width:768px) {
     .nav-links {
         position: absolute;
@@ -67,106 +71,117 @@ nav.navbar {
         padding: 10px 20px;
         border-radius: 0 0 8px 8px;
     }
-
     .nav-links.show {
         display: flex;
     }
-
     .hamburger {
         display: block;
     }
 }
 
+
 /* ====== LOGIN PAGE ====== */
+
 .login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 80px); /* Sesuaikan navbar/footer */
-  padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    /* Sesuaikan navbar/footer */
+    padding: 20px;
 }
 
 .login-card {
-  background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
-  padding: 28px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 460px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  animation: fadeIn 0.4s ease-in-out;
+    background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
+    padding: 28px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .login-header {
-  text-align: center;
-  margin-bottom: 18px;
+    text-align: center;
+    margin-bottom: 18px;
 }
 
 .login-header h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 6px;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
 .login-header .subtitle {
-  font-size: 14px;
-  color: var(--muted, #666);
+    font-size: 14px;
+    color: var(--muted, #666);
 }
 
 #login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #login-form label {
-  font-size: 14px;
-  font-weight: 500;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 #login-form input {
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
 }
 
 #login-form input:focus {
-  border-color: #1b8f5a;
-  box-shadow: 0 0 0 2px rgba(66,165,245,0.2);
+    border-color: #1b8f5a;
+    box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.2);
 }
 
 #login-form button.btn {
-  background: #1b8f5a;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  cursor: pointer;
-  width: 100%;
+    background: #1b8f5a;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
 }
 
 #login-form button.btn:hover {
-  background: #157347;
+    background: #157347;
 }
 
 #login-error {
-  font-size: 13px;
-  color: #b00020;
+    font-size: 13px;
+    color: #b00020;
 }
+
 
 /* Footer */
+
 .site-footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #fff;
 }
 
+
 /* Fade In Animation */
+
 @keyframes fadeIn {
-  from {opacity:0; transform: translateY(10px);}
-  to {opacity:1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

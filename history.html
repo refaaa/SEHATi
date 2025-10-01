@@ -1,77 +1,80 @@
 <!doctype html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8">
-  <title>SEHATi — Riwayat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/history.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="utf-8">
+    <title>SEHATi — Riwayat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/history.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav>
-    <div class="brand">
-      <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
-      <div>SEHATi</div>
-    </div>
 
-    <!-- hamburger -->
+    <nav>
+        <div class="brand">
+            <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
+            <div>SEHATi</div>
+        </div>
 
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>    
-    <!-- menu -->
-    <div class="nav-links" id="navMenu">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="history.html" class="active">Riwayat</a>
-      <a href="about.html">Tentang</a>
-      <a href="contact.html">Kontak</a>
-      <a href="profile.html">Profil</a>
-    </div>
-  </nav>
+        <!-- hamburger -->
+        <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
 
-  <!-- Konten -->
-  <main class="container">
-    <div class="card">
-      <h3>Riwayat Makanan</h3>
-      <div class="filter-bar">
-        <select id="filter-select">
+        <!-- menu -->
+        <div class="nav-links" id="navMenu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="history.html" class="active">Riwayat</a>
+            <a href="about.html">Tentang</a>
+            <a href="contact.html">Kontak</a>
+            <a href="profile.html">Profil</a>
+        </div>
+    </nav>
+
+
+    <!-- Konten -->
+    <main class="container">
+        <div class="card">
+            <h3>Riwayat Makanan</h3>
+            <div class="filter-bar">
+                <select id="filter-select">
           <option value="all">Semua</option>
           <option value="today">Hari ini</option>
         </select>
-        <input type="date" id="filter-date">
-        <button id="btn-filter" class="btn">Terapkan</button>
-      </div>
+                <input type="date" id="filter-date">
+                <button id="btn-filter" class="btn">Terapkan</button>
+            </div>
 
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Makanan</th>
-              <th>Kalori</th>
-              <th>Tanggal</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="history-body">
-            <tr>
-              <td colspan="4" style="text-align:center;color:gray">
-                Pilih filter dan tekan <b>Terapkan</b> untuk melihat data
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Makanan</th>
+                            <th>Kalori</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr>
+                            <td colspan="4" style="text-align:center;color:gray">
+                                Pilih filter dan tekan <b>Terapkan</b> untuk melihat data
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div>© 2025 SEHATi • Informatika Medik</div>
-  </footer>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div>© 2025 SEHATi • Informatika Medik</div>
+    </footer>
 
-  <!-- JS -->
-  <script src="js/history.js"></script>
+    <!-- JS -->
+    <script src="js/history.js"></script>
 </body>
+
 </html>

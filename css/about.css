@@ -1,33 +1,113 @@
-/* ========================
-   Tentang SEHATi (about.css)
-   ======================== */
-
-
-/* Section utama */
+/* ================================
+   ABOUT.CSS 
+   ================================ */
 
 
 /* Import Google Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap');
 
-/* Judul */
+/* RESET & BODY */
 
-
-/* Paragraf */
-
-#tentang p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: center;
-    color: #333;
-    /* Warna teks utama yang sama dengan dashboard */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4faf6;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1b8f5a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+nav .brand .logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffd700;
+}
+
+
+/* Hamburger */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin: 6px 0;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* ABOUT SECTION */
 
 #tentang {
     padding: 60px 20px;
     background-color: #f4faf6;
-    /* Gunakan background dari dashboard */
     text-align: center;
 }
 
@@ -35,7 +115,6 @@
     font-size: 32px;
     margin-bottom: 20px;
     color: #1b8f5a;
-    /* Hijau dari dashboard */
     font-weight: 700;
 }
 
@@ -44,8 +123,17 @@
     margin: auto;
     font-size: 16px;
     color: #444;
-    /* Warna teks lebih gelap */
     line-height: 1.6;
+}
+
+#tentang .hero-img {
+    margin-top: 20px;
+}
+
+#tentang .hero-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
 
 
@@ -63,16 +151,16 @@
 
 .visi-misi .card {
     background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
-    /* Gradien pink lembut dari dashboard */
     padding: 24px;
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .visi-misi .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -80,11 +168,10 @@
     margin-bottom: 12px;
     font-size: 20px;
     color: #1b8f5a;
-    /* Hijau dari dashboard */
 }
 
 
-/* Fitur */
+/* Fitur Utama – Card */
 
 .fitur {
     margin-top: 60px;
@@ -94,28 +181,34 @@
     margin-bottom: 24px;
     font-size: 22px;
     color: #1b8f5a;
-    /* Hijau dari dashboard */
 }
 
 .fitur-grid {
     display: flex;
-    justify-content: center;
-    gap: 25px;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .fitur-item {
-    width: 220px;
+    flex: 1 1 280px;
+    max-width: 340px;
+    height: auto;
     background: linear-gradient(145deg, #ffe6f0, #ffd6eb);
-    /* Gradien pink lembut */
-    padding: 20px;
+    padding: 22px;
     border-radius: 14px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
 }
 
 .fitur-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.03);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -123,14 +216,14 @@
     margin-bottom: 8px;
     font-size: 18px;
     color: #1b8f5a;
-    /* Hijau dari dashboard */
+    text-align: center;
 }
 
 .fitur-item p {
     font-size: 14px;
     color: #555;
-    /* Warna teks lebih gelap */
     line-height: 1.5;
+    text-align: center;
 }
 
 
@@ -140,34 +233,44 @@
     margin-top: 50px;
     font-size: 16px;
     color: #1b8f5a;
-    /* Hijau dari dashboard */
     font-weight: 500;
 }
 
 
-/* ========================
-   Responsif tambahan
-   ======================== */
+/* FOOTER */
 
-
-   /* Hamburger button */
-.menu-toggle {
-    display: none;
-    font-size: 1.6rem;
-    background: none;
-    border: none;
+.site-footer {
+    background: #157347;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    flex-wrap: wrap;
+    text-align: center;
     color: #fff;
-    cursor: pointer;
 }
 
-/* Responsive Navbar */
+
+/* =======================
+   RESPONSIVE
+   ======================= */
+
+
+/* Mobile ≤768px */
+
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* tampil hanya di mobile */
+        display: block !important;
+        /* paksa muncul */
+        position: relative;
+        /* biar gak ketiban */
+        z-index: 1001;
+        /* lebih tinggi dari nav-links */
     }
-
     .nav-links {
-        display: none; /* disembunyikan default */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -176,59 +279,55 @@
         padding: 1rem;
         border-radius: 8px;
         width: 180px;
-        z-index: 999;
+        z-index: 1000;
+        transition: all 0.3s ease;
     }
-
     .nav-links.active {
-        display: flex; /* muncul kalau ada class active */
+        display: flex;
     }
 }
 
-/* Navbar responsif */
 
-@media (max-width: 900px) {
-    /* Fitur & Visimisi */
-    .visi-misi {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 kolom */
-    }
-    .fitur-grid {
-        gap: 15px;
-        /* Sesuaikan jarak di tablet */
-    }
+/* Tablet 601–900px */
+
+@media (min-width: 601px) and (max-width: 900px) {
     .fitur-item {
-        width: 100%;
-        /* Mengubah fitur-item menjadi 100% agar mudah tampil di layar kecil */
+        flex: 1 1 250px;
+        max-width: 300px;
     }
 }
 
 
-/* Responsif untuk Handphone (max-width: 600px) */
+/* Laptop 901–1200px */
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .fitur-item {
+        flex: 1 1 280px;
+        max-width: 340px;
+    }
+}
+
+
+/* Desktop >1200px */
+
+@media (min-width: 1201px) {
+    .fitur-item {
+        flex: 1 1 320px;
+        max-width: 360px;
+    }
+}
+
+
+/* Visi & Misi responsive */
 
 @media (max-width: 600px) {
-    /* Fitur & Visimisi */
     .visi-misi {
         grid-template-columns: 1fr;
-        /* 1 kolom */
     }
-    .fitur-grid {
-        gap: 10px;
-        /* Sesuaikan jarak di HP */
-    }
-    .fitur-item {
-        width: 100%;
-        /* Menyesuaikan ukuran fitur-item agar 100% di HP */
-    }
-    #tentang h2 {
-        font-size: 28px;
-        /* Mengurangi ukuran font pada judul */
-    }
-    .intro {
-        font-size: 14px;
-        /* Mengurangi ukuran font di intro */
-    }
-    #tentang {
-        padding: 40px 15px;
-        /* Menyesuaikan padding untuk perangkat kecil */
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .visi-misi {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

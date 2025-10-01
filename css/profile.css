@@ -168,7 +168,6 @@ nav .logo {
 
 .save-btn {
     background: #1b8f5a;
-    /* tombol utama pink tua */
     color: #fff;
 }
 
@@ -189,8 +188,8 @@ nav .logo {
 /* ===== Footer ===== */
 
 .site-footer {
-  background: linear-gradient(135deg, #1b8f5a, #157347); /* sama seperti navbar */
-  border-top: none; /* hilangkan garis atas */
+  background: linear-gradient(135deg, #1b8f5a, #157347); 
+  border-top: none; 
   padding: 14px 20px;
   display: flex;
   justify-content: center;

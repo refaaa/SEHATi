@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6fa; /* Adjusted background color to match image's light, slightly purplish hue */
+  background-color: #f4f6fa; 
   color: #333;
   line-height: 1.6;
   display: flex;
@@ -79,6 +79,7 @@ body {
 
   .hamburger {
     display: block;
+    color: white;
   }
 }
 
@@ -135,16 +136,16 @@ body {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  align-items: center; /* Align items for better visual */
+  align-items: center; 
 }
 
 .form-input input {
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #c9d8e3; /* Softer border color for inputs */
+  border: 1px solid #c9d8e3; 
   flex: 1;
   min-width: 150px;
-  font-size: 0.95rem; /* Slightly larger text in input */
+  font-size: 0.95rem; 
 }
 
 .form-input button {
@@ -165,7 +166,7 @@ body {
 /* ========== DAFTAR MAKANAN ========== */
 #daftarMakanan {
   list-style: none;
-  padding: 0; /* Ensure no default list padding */
+  padding: 0; 
 }
 
 #daftarMakanan li {
@@ -176,7 +177,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow for list items */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
 }
 
 #daftarMakanan li span {
@@ -214,13 +215,13 @@ body {
 }
 
 /* ========== RESEP RENDAH KALORI ========== */
-h2.resep-title { /* Added a class for the main recipe heading for styling */
+h2.resep-title { 
   font-size: 1.5rem;
   color: #1b8f5a;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing for potential icon */
+  gap: 10px; 
 }
 
 .resep-container {
@@ -231,7 +232,7 @@ h2.resep-title { /* Added a class for the main recipe heading for styling */
 }
 
 .resep-card {
-  background: #ffffff; /* White background for individual recipe cards */
+  background: #ffffff; 
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -288,7 +289,7 @@ h2.resep-title { /* Added a class for the main recipe heading for styling */
 .progress-bar {
   width: 100%;
   height: 30px;
-  background: #e0e0e0; /* Lighter background for empty progress */
+  background: #e0e0e0; 
   border-radius: 20px;
   margin: 15px 0;
   overflow: hidden;
@@ -297,7 +298,7 @@ h2.resep-title { /* Added a class for the main recipe heading for styling */
 #progress {
   height: 100%;
   width: 0%;
-  background: #4CAF50; /* A slightly different shade of green for progress bar */
+  background: #4CAF50; 
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -308,8 +309,8 @@ h2.resep-title { /* Added a class for the main recipe heading for styling */
 #progress-text {
   padding-right: 10px;
   font-weight: bold;
-  color: #000; /* Assuming black text on progress bar */
-  white-space: nowrap; /* Prevent text from wrapping */
+  color: #000; 
+  white-space: nowrap; 
 }
 
 /* ========== ANIMASI ========== */
@@ -334,6 +335,6 @@ h2.resep-title { /* Added a class for the main recipe heading for styling */
     gap: 8px;
   }
   .form-input input, .form-input button {
-    width: 100%; /* Full width on small screens */
+    width: 100%; 
   }
 }

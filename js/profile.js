@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", () => {
             if (confirm("Yakin ingin logout?")) {
                 sessionStorage.removeItem("sehati_user");
-                // localStorage.removeItem("profile"); // aktifkan jika mau hapus profil juga
+                // localStorage.removeItem("profile");
                 window.location.href = "index.html";
             }
         });

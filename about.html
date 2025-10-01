@@ -1,38 +1,49 @@
 <!doctype html>
-<html>
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
     <title>SEHATi — Tentang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/about.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav>
         <div class="brand">
             <div class="logo"><i class="fa-solid fa-notes-medical"></i></div>
             <div>SEHATi</div>
         </div>
-        <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
-        <div class="nav-links">
+
+        <!-- Hamburger -->
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links" id="navMenu">
             <a href="dashboard.html">Dashboard</a>
             <a href="history.html">Riwayat</a>
-            <a href="about.html">Tentang</a>
+            <a href="about.html" class="active">Tentang</a>
             <a href="contact.html">Kontak</a>
             <a href="profile.html">Profil</a>
         </div>
     </nav>
 
+    <!-- Section Tentang -->
     <section id="tentang">
         <div class="hero">
             <div class="hero-text">
                 <h2>Tentang SEHATi</h2>
                 <p class="intro">
                     SEHATi adalah platform kesehatan digital yang membantu Anda menjaga pola hidup sehat dengan cara yang lebih mudah dan praktis. Mulai dari pencatatan asupan kalori, pemantauan aktivitas harian, hingga artikel edukasi seputar gizi — semua tersedia dalam
-                    satu tempat. Dengan desain sederhana dan ramah pengguna, SEHATi hadir sebagai sahabat Anda dalam membangun kebiasaan sehat setiap hari.
-                </p>
+                    satu tempat. Dengan desain sederhana dan ramah pengguna, SEHATi hadir sebagai sahabat Anda dalam membangun kebiasaan sehat setiap hari. </p>
             </div>
             <div class="hero-img">
                 <img src="tracking-kalori.jpg" alt="Ilustrasi Hidup Sehat">
@@ -42,20 +53,19 @@
             <div class="visi-misi">
                 <div class="card">
                     <h3>🌟 Visi</h3>
-                    <p>Mendukung masyarakat agar lebih sadar dan peduli pada kesehatan diri dengan memanfaatkan teknologi digital.</p>
+                    <p>Mendukung masyarakat agar lebih sadar dan peduli pada kesehatan diri dengan teknologi digital.</p>
                 </div>
                 <div class="card">
                     <h3>🎯 Misi</h3>
                     <ul>
-                        <li>Memantau kalori & nutrisi harian melalui tracking kalori</li>
-                        <li>Mencatat riwayat makanan yang telah dikonsumsi</li>
-                        <li>Memberikan resep rendah kalori untuk mendukung pola makan sehat</li>
+                        <li>Memantau kalori & nutrisi harian</li>
+                        <li>Mencatat riwayat makanan</li>
+                        <li>Memberikan resep sehat</li>
                     </ul>
-
-
                 </div>
             </div>
 
+            <!-- Fitur -->
             <div class="fitur">
                 <h3>✨ Fitur Utama SEHATi</h3>
                 <div class="fitur-grid">
@@ -64,30 +74,45 @@
                         <p>Catat asupan kalori harian dengan mudah.</p>
                     </div>
                     <div class="fitur-item">
-                        <h4>🍲 Resep Masakan Sehat</h4>
+                        <h4>🍲 Resep Sehat</h4>
                         <p>Temukan inspirasi menu bergizi untuk mendukung pola makan seimbang.</p>
                     </div>
                     <div class="fitur-item">
                         <h4>🗂️ Riwayat Makanan</h4>
-                        <p>Lihat kembali catatan makanan yang sudah Anda konsumsi.</p>
+                        <p>Lihat catatan makanan yang sudah dikonsumsi.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Call to Action -->
-            <p class="cta">
-                Mulailah gunakan <b>SEHATi</b> sekarang untuk hidup lebih sehat 💚
-            </p>
+            <p class="cta">Mulailah gunakan <b>SEHATi</b> sekarang untuk hidup lebih sehat 💚</p>
+        </div>
     </section>
 
-    <!-- Footer (sama dengan history.html) -->
-
-    
+    <!-- Footer -->
     <footer class="site-footer">
         <div>© 2025 SEHATi • Informatika Medik</div>
-        <div class="footer-icons">
-            <a href="dashboard.html" title="Kembali ke Dashboard">
-
-            </a>
-        </div>
     </footer>
+
+    <!-- JS Hamburger -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+                menuToggle.classList.toggle("open");
+            });
+
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                    menuToggle.classList.remove("open");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
